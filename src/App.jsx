@@ -10,9 +10,24 @@ import {
   Link,
   AppBar,
   Toolbar,
+  CssBaseline,
+  ThemeProvider,
+  createTheme,
+  IconButton,
 } from "@mui/material";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
+
+const theme = createTheme({
+  palette: {
+    mode: "light",
+    primary: { main: "#1976d2" },
+    secondary: { main: "#f50057" },
+  },
+  typography: {
+    h4: { fontWeight: 600, marginBottom: "1rem" },
+  },
+});
 
 const projects = [
   {
@@ -38,50 +53,57 @@ const projects = [
 
 function App() {
   return (
-    <>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" sx={{ flexGrow: 1 }}>
             Goldwin Stewart
           </Typography>
-          <Link
-            href="https://github.com/yourusername"
+          <IconButton
             color="inherit"
-            sx={{ ml: 2 }}
+            component={Link}
+            href="https://github.com/yourusername"
+            target="_blank"
           >
             <GitHubIcon />
-          </Link>
-          <Link
-            href="https://linkedin.com/in/goldwin-ste"
+          </IconButton>
+          <IconButton
             color="inherit"
-            sx={{ ml: 1 }}
+            component={Link}
+            href="https://linkedin.com/in/goldwin-ste"
+            target="_blank"
           >
             <LinkedInIcon />
-          </Link>
+          </IconButton>
         </Toolbar>
       </AppBar>
 
       <Container sx={{ py: 5 }}>
-        <Typography variant="h4" gutterBottom>
-          About Me
-        </Typography>
+        <Typography variant="h4">About Me</Typography>
         <Typography paragraph>
           Full Stack Software Engineer | Python, React, GCP | Machine Learning &
           Data Engineering. Passionate about building scalable applications and
           exploring AI solutions.
         </Typography>
 
-        <Typography variant="h4" gutterBottom sx={{ mt: 5 }}>
+        <Typography variant="h4" sx={{ mt: 5 }}>
           Projects
         </Typography>
         <Grid container spacing={4}>
           {projects.map((project, index) => (
             <Grid item key={index} xs={12} sm={6} md={4}>
-              <Card>
+              <Card
+                sx={{
+                  height: "100%",
+                  display: "flex",
+                  flexDirection: "column",
+                }}
+              >
                 <CardMedia
                   component="img"
-                  height="140"
-                  image={project.img} // replace with your images
+                  height="180"
+                  image={project.img}
                   alt={project.title}
                 />
                 <CardContent>
@@ -99,9 +121,7 @@ function App() {
         </Grid>
 
         <Box sx={{ mt: 5 }}>
-          <Typography variant="h4" gutterBottom>
-            Contact
-          </Typography>
+          <Typography variant="h4">Contact</Typography>
           <Typography>
             Email:{" "}
             <Link href="mailto:goldwin.stewart@gmail.com">
@@ -116,13 +136,13 @@ function App() {
           </Typography>
           <Typography>
             GitHub:{" "}
-            <Link href="https://github.com/yourusername">
+            <Link href="https://github.com/GoldwinXS">
               github.com/GoldwinXS
             </Link>
           </Typography>
         </Box>
       </Container>
-    </>
+    </ThemeProvider>
   );
 }
 
