@@ -117,7 +117,7 @@ function App() {
           <Typography>
             GitHub:{" "}
             <Link href="https://github.com/yourusername">
-              github.com/yourusername
+              github.com/GoldwinXS
             </Link>
           </Typography>
         </Box>
