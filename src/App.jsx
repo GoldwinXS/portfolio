@@ -84,7 +84,7 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       {/* NAVBAR */}
-      <AppBar position="sticky" elevation={0} color="transparent">
+      <AppBar position="static" elevation={0} color="transparent">
         <Toolbar>
           <Typography variant="h6" sx={{ flexGrow: 1, fontWeight: 600 }}>
             Goldwin Stewart
@@ -111,15 +111,34 @@ export default function App() {
       {/* HERO SECTION */}
       <Box
         sx={{
+          position: "relative",
           minHeight: "80vh",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
           textAlign: "center",
-          px: 2,
+          overflow: "hidden",
         }}
       >
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            zIndex: -1,
+          }}
+        >
+          <source src="/videos/hero-video.mp4" type="video/mp4" />
+        </video>
+
         <Typography variant="h2" gutterBottom>
           Hi, I'm Goldwin.
         </Typography>
@@ -228,7 +247,7 @@ export default function App() {
         </Typography>
         <Typography>
           LinkedIn:{" "}
-          <Link href="https://linkedin.com/in/goldwin-ste">
+          <Link href="https://www.linkedin.com/in/goldwin-stewart-624765387/">
             linkedin.com/in/goldwin-ste
           </Link>
         </Typography>
