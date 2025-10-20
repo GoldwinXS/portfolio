@@ -114,46 +114,68 @@ export default function App() {
           position: "relative",
           minHeight: "80vh",
           display: "flex",
-          flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
           textAlign: "center",
           overflow: "hidden",
         }}
       >
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          style={{
+        {/* YouTube background */}
+        <Box
+          sx={{
             position: "absolute",
             top: 0,
             left: 0,
             width: "100%",
             height: "100%",
-            objectFit: "cover",
+            overflow: "hidden",
             zIndex: -1,
           }}
         >
-          <source src="/videos/hero-video.mp4" type="video/mp4" />
-        </video>
+          <iframe
+            src="https://www.youtube.com/embed/ow2RdiiKJCg?autoplay=1&mute=1&controls=0&loop=1&playlist=ow2RdiiKJCg&modestbranding=1&showinfo=0"
+            title="Hero Background"
+            frameBorder="0"
+            allow="autoplay; fullscreen"
+            allowFullScreen
+            style={{
+              width: "100%",
+              height: "100%",
+              pointerEvents: "none",
+              objectFit: "cover",
+            }}
+          />
+        </Box>
 
-        <Typography variant="h2" gutterBottom>
-          Hi, I'm Goldwin.
-        </Typography>
-        <Typography variant="h5" color="text.secondary" sx={{ mb: 4 }}>
-          Full Stack Engineer • AI & Data • React • MLOps
-        </Typography>
-        <Button
-          variant="contained"
-          color="secondary"
-          endIcon={<KeyboardArrowDownIcon />}
-          href="#projects"
-          sx={{ borderRadius: 8, px: 3, py: 1.5 }}
-        >
-          View My Work
-        </Button>
+        {/* Overlay for better text readability */}
+        <Box
+          sx={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            background: "rgba(0, 0, 0, 0.45)",
+            zIndex: -1,
+          }}
+        />
+
+        <Box sx={{ color: "white", px: 2 }}>
+          <Typography variant="h2" gutterBottom>
+            Hi, I'm Goldwin.
+          </Typography>
+          <Typography variant="h5" sx={{ mb: 4 }}>
+            Full Stack Engineer • AI & Data • React • MLOps
+          </Typography>
+          <Button
+            variant="contained"
+            color="secondary"
+            href="#projects"
+            sx={{ borderRadius: 8, px: 3, py: 1.5 }}
+          >
+            View My Work
+          </Button>
+        </Box>
       </Box>
 
       <Divider sx={{ my: 4 }} />
