@@ -63,7 +63,7 @@ function App() {
           <IconButton
             color="inherit"
             component={Link}
-            href="https://github.com/yourusername"
+            href="https://goldwinxs.github.io/portfolio/"
             target="_blank"
           >
             <GitHubIcon />
