@@ -1,69 +1,98 @@
 import React from "react";
 import {
-  Container,
-  Typography,
-  Card,
-  CardMedia,
-  CardContent,
-  Grid,
-  Box,
-  Link,
   AppBar,
   Toolbar,
+  Typography,
+  IconButton,
+  Link,
   CssBaseline,
   ThemeProvider,
   createTheme,
-  IconButton,
+  Container,
+  Box,
+  Grid,
+  Card,
+  CardContent,
+  CardMedia,
+  Button,
+  Divider,
 } from "@mui/material";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 const theme = createTheme({
   palette: {
     mode: "light",
-    primary: { main: "#1976d2" },
-    secondary: { main: "#f50057" },
+    background: {
+      default: "#f5f5f7", // Apple-like soft grey
+    },
+    primary: {
+      main: "#000000",
+    },
+    secondary: {
+      main: "#0071e3", // Apple's blue
+    },
   },
   typography: {
-    h4: { fontWeight: 600, marginBottom: "1rem" },
+    fontFamily:
+      "'SF Pro Display', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+    h2: { fontWeight: 600, letterSpacing: "-0.02em" },
+    h4: { fontWeight: 500 },
+    body1: { lineHeight: 1.7 },
+  },
+  shape: {
+    borderRadius: 16,
   },
 });
 
 const projects = [
   {
+    title: "BBoxLabel – Bounding Box Annotation Tool",
+    description:
+      "A lightweight web app for labeling bounding boxes for computer vision datasets. Built to make dataset preparation easy and fast for YOLO and other CV models.",
+    tech: "React, Canvas API, MUI",
+    img: "images/bboxlabel.png",
+    link: "https://github.com/GoldwinXS/bboxlabel",
+  },
+  {
+    title: "EpFindr – Episode Ratings Dashboard",
+    description:
+      "EpFindr visualizes IMDb ratings for any TV show. Search a show, instantly see the season-by-season episode ratings, and find that one nostalgic episode you vaguely remember.",
+    tech: "Python, IMDbPY, Plotly Dash",
+    img: "images/tvshow.png",
+    link: "https://epfindr.web.app/",
+  },
+  {
     title: "Custom YOLOv3 Router Error Detection",
     description:
-      "TensorFlow/Keras model detecting router errors via computer vision.",
+      "A TensorFlow/Keras model trained to detect router errors through computer vision. Built a pipeline for image labeling, training, and real-time inference.",
     tech: "Python, TensorFlow, Keras, OpenCV",
     img: "images/yolo.jpg",
   },
   {
-    title: "TV Show Ratings Visualizer",
-    description: "Plotly Dash app visualizing IMDb ratings per episode.",
-    tech: "Python, Dash, Plotly",
-    img: "images/tvshow.jpg",
-  },
-  {
     title: "Real-Time Ray Tracing Browser Engine",
-    description: "Browser engine achieving ~120fps for real-time ray tracing.",
+    description:
+      "Experimental WebGL-based ray tracer running in the browser at 120fps. Explores GPU parallelization in GLSL and optimized BVH structures.",
     tech: "WebGL, JavaScript, GLSL",
     img: "images/raytrace.png",
   },
 ];
 
-function App() {
+export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <AppBar position="static">
+      {/* NAVBAR */}
+      <AppBar position="sticky" elevation={0} color="transparent">
         <Toolbar>
-          <Typography variant="h6" sx={{ flexGrow: 1 }}>
+          <Typography variant="h6" sx={{ flexGrow: 1, fontWeight: 600 }}>
             Goldwin Stewart
           </Typography>
           <IconButton
             color="inherit"
             component={Link}
-            href="https://goldwinxs.github.io/portfolio/"
+            href="https://github.com/GoldwinXS"
             target="_blank"
           >
             <GitHubIcon />
@@ -79,25 +108,70 @@ function App() {
         </Toolbar>
       </AppBar>
 
-      <Container sx={{ py: 5 }}>
-        <Typography variant="h4">About Me</Typography>
-        <Typography paragraph>
-          Full Stack Software Engineer | Python, React, GCP | Machine Learning &
-          Data Engineering. Passionate about building scalable applications and
-          exploring AI solutions.
+      {/* HERO SECTION */}
+      <Box
+        sx={{
+          minHeight: "80vh",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          textAlign: "center",
+          px: 2,
+        }}
+      >
+        <Typography variant="h2" gutterBottom>
+          Hi, I'm Goldwin.
         </Typography>
+        <Typography variant="h5" color="text.secondary" sx={{ mb: 4 }}>
+          Full Stack Engineer • AI & Data • React • MLOps
+        </Typography>
+        <Button
+          variant="contained"
+          color="secondary"
+          endIcon={<KeyboardArrowDownIcon />}
+          href="#projects"
+          sx={{ borderRadius: 8, px: 3, py: 1.5 }}
+        >
+          View My Work
+        </Button>
+      </Box>
 
-        <Typography variant="h4" sx={{ mt: 5 }}>
+      <Divider sx={{ my: 4 }} />
+
+      {/* ABOUT */}
+      <Container maxWidth="md" sx={{ mb: 8 }}>
+        <Typography variant="h4" gutterBottom>
+          About Me
+        </Typography>
+        <Typography variant="body1">
+          I’m a full-stack software engineer passionate about building
+          intelligent and scalable systems. I love working at the intersection
+          of data, AI, and product engineering — from crafting elegant frontend
+          interfaces to architecting complex backend systems and ML pipelines.
+        </Typography>
+      </Container>
+
+      <Divider sx={{ mb: 4 }} />
+
+      {/* PROJECTS */}
+      <Container maxWidth="lg" id="projects" sx={{ mb: 8 }}>
+        <Typography variant="h4" gutterBottom>
           Projects
         </Typography>
         <Grid container spacing={4}>
           {projects.map((project, index) => (
             <Grid item key={index} xs={12} sm={6} md={4}>
               <Card
+                elevation={3}
                 sx={{
                   height: "100%",
                   display: "flex",
                   flexDirection: "column",
+                  transition: "transform 0.3s ease",
+                  "&:hover": {
+                    transform: "translateY(-6px)",
+                  },
                 }}
               >
                 <CardMedia
@@ -106,44 +180,74 @@ function App() {
                   image={project.img}
                   alt={project.title}
                 />
-                <CardContent>
-                  <Typography variant="h6">{project.title}</Typography>
-                  <Typography variant="body2" color="text.secondary">
+                <CardContent sx={{ flexGrow: 1 }}>
+                  <Typography variant="h6" gutterBottom>
+                    {project.title}
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    sx={{ mb: 1 }}
+                  >
                     {project.description}
                   </Typography>
                   <Typography variant="caption" color="text.secondary">
                     {project.tech}
                   </Typography>
                 </CardContent>
+                {project.link && (
+                  <Box sx={{ p: 2, pt: 0 }}>
+                    <Button
+                      size="small"
+                      color="secondary"
+                      href={project.link}
+                      target="_blank"
+                    >
+                      View Project
+                    </Button>
+                  </Box>
+                )}
               </Card>
             </Grid>
           ))}
         </Grid>
-
-        <Box sx={{ mt: 5 }}>
-          <Typography variant="h4">Contact</Typography>
-          <Typography>
-            Email:{" "}
-            <Link href="mailto:goldwin.stewart@gmail.com">
-              goldwin.stewart@gmail.com
-            </Link>
-          </Typography>
-          <Typography>
-            LinkedIn:{" "}
-            <Link href="https://linkedin.com/in/goldwin-ste">
-              linkedin.com/in/goldwin-ste
-            </Link>
-          </Typography>
-          <Typography>
-            GitHub:{" "}
-            <Link href="https://github.com/GoldwinXS">
-              github.com/GoldwinXS
-            </Link>
-          </Typography>
-        </Box>
       </Container>
+
+      <Divider sx={{ mb: 4 }} />
+
+      {/* CONTACT */}
+      <Container maxWidth="sm" sx={{ mb: 6, textAlign: "center" }}>
+        <Typography variant="h4" gutterBottom>
+          Contact
+        </Typography>
+        <Typography>
+          Email:{" "}
+          <Link href="mailto:goldwin.stewart@gmail.com">
+            goldwin.stewart@gmail.com
+          </Link>
+        </Typography>
+        <Typography>
+          LinkedIn:{" "}
+          <Link href="https://linkedin.com/in/goldwin-ste">
+            linkedin.com/in/goldwin-ste
+          </Link>
+        </Typography>
+        <Typography>
+          GitHub:{" "}
+          <Link href="https://github.com/GoldwinXS">github.com/GoldwinXS</Link>
+        </Typography>
+      </Container>
+
+      <Box
+        sx={{
+          py: 3,
+          textAlign: "center",
+          fontSize: "0.875rem",
+          color: "text.secondary",
+        }}
+      >
+        © {new Date().getFullYear()} Goldwin Stewart
+      </Box>
     </ThemeProvider>
   );
 }
-
-export default App;
