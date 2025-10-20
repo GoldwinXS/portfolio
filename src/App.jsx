@@ -47,7 +47,7 @@ const projects = [
     title: "Real-Time Ray Tracing Browser Engine",
     description: "Browser engine achieving ~120fps for real-time ray tracing.",
     tech: "WebGL, JavaScript, GLSL",
-    img: "images/raytrace.jpg",
+    img: "images/raytrace.png",
   },
 ];
 
