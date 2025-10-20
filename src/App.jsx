@@ -20,7 +20,8 @@ import {
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-
+import ProjectCard from "./ProjectCard";
+import ResumeSection from "./ResumeSection";
 const theme = createTheme({
   palette: {
     mode: "light",
@@ -64,11 +65,35 @@ const projects = [
     link: "https://epfindr.web.app/",
   },
   {
+    title: "Minecraft in Python (Pycraft)",
+    description:
+      "A Python recreation of Minecraft mechanics. Build blocks, explore a voxel world, and experiment with procedural generation.",
+    tech: "Python, Pygame",
+    video:
+      "https://www.youtube.com/embed/ow2RdiiKJCg?autoplay=1&mute=1&controls=0&loop=1&playlist=ow2RdiiKJCg&modestbranding=1",
+    link: "https://github.com/GoldwinXS/pycraft",
+  },
+  {
+    title: "Recipe Chat – iOS App",
+    description:
+      "An iOS app that lets users create recipes interactively using ChatGPT. Input ingredients or instructions, and get structured, shareable recipes.",
+    tech: "Swift, SwiftUI, CoreData",
+    img: "images/recipechat.png",
+    link: "https://apps.apple.com/app/recipe-chat/id123456789",
+  },
+  {
+    title: "Budget Planner – Dashboard",
+    description:
+      "A custom financial dashboard to track expenses and visualize budgets. Swipe through different views to analyze spending trends and plan your finances.",
+    tech: "React, Chart.js, MUI",
+    images: ["images/budget1.jpg", "images/budget2.jpg", "images/budget3.jpg"],
+  },
+  {
     title: "Custom YOLOv3 Router Error Detection",
     description:
       "A TensorFlow/Keras model trained to detect router errors through computer vision. Built a pipeline for image labeling, training, and real-time inference.",
     tech: "Python, TensorFlow, Keras, OpenCV",
-    img: "images/yolo.jpg",
+    img: "images/yolo.png",
   },
   {
     title: "Real-Time Ray Tracing Browser Engine",
@@ -133,9 +158,8 @@ export default function App() {
           }}
         >
           <iframe
-            src="https://www.youtube.com/embed/ow2RdiiKJCg?autoplay=1&mute=1&controls=0&loop=1&playlist=ow2RdiiKJCg&modestbranding=1&showinfo=0"
+            src="https://www.youtube.com/embed/ClJe2RUw26A?autoplay=1&mute=1&controls=0&loop=1&playlist=ClJe2RUw26A&modestbranding=1&showinfo=0"
             title="Hero Background"
-            frameBorder="0"
             allow="autoplay; fullscreen"
             allowFullScreen
             style={{
@@ -182,15 +206,7 @@ export default function App() {
 
       {/* ABOUT */}
       <Container maxWidth="md" sx={{ mb: 8 }}>
-        <Typography variant="h4" gutterBottom>
-          About Me
-        </Typography>
-        <Typography variant="body1">
-          I’m a full-stack software engineer passionate about building
-          intelligent and scalable systems. I love working at the intersection
-          of data, AI, and product engineering — from crafting elegant frontend
-          interfaces to architecting complex backend systems and ML pipelines.
-        </Typography>
+        <ResumeSection />
       </Container>
 
       <Divider sx={{ mb: 4 }} />
@@ -200,55 +216,17 @@ export default function App() {
         <Typography variant="h4" gutterBottom>
           Projects
         </Typography>
-        <Grid container spacing={4}>
+        <Grid container spacing={4} justifyContent="center">
           {projects.map((project, index) => (
-            <Grid item key={index} xs={12} sm={6} md={4}>
-              <Card
-                elevation={3}
-                sx={{
-                  height: "100%",
-                  display: "flex",
-                  flexDirection: "column",
-                  transition: "transform 0.3s ease",
-                  "&:hover": {
-                    transform: "translateY(-6px)",
-                  },
-                }}
-              >
-                <CardMedia
-                  component="img"
-                  height="180"
-                  image={project.img}
-                  alt={project.title}
-                />
-                <CardContent sx={{ flexGrow: 1 }}>
-                  <Typography variant="h6" gutterBottom>
-                    {project.title}
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    color="text.secondary"
-                    sx={{ mb: 1 }}
-                  >
-                    {project.description}
-                  </Typography>
-                  <Typography variant="caption" color="text.secondary">
-                    {project.tech}
-                  </Typography>
-                </CardContent>
-                {project.link && (
-                  <Box sx={{ p: 2, pt: 0 }}>
-                    <Button
-                      size="small"
-                      color="secondary"
-                      href={project.link}
-                      target="_blank"
-                    >
-                      View Project
-                    </Button>
-                  </Box>
-                )}
-              </Card>
+            <Grid
+              item
+              key={index}
+              xs={12}
+              sm={6}
+              md={4}
+              sx={{ display: "flex" }}
+            >
+              <ProjectCard project={project} />
             </Grid>
           ))}
         </Grid>
