@@ -48,7 +48,7 @@ const projects = [
     title: "BBoxLabel – Bounding Box Annotation Tool",
     description:
       "A lightweight web app for labeling bounding boxes for computer vision datasets. Built to make dataset preparation easy and fast for YOLO and other CV models.",
-    tech: "React, Canvas API, MUI",
+    tech: "Python",
     img: "images/bboxlabel.png",
     link: "https://github.com/GoldwinXS/bboxlabel",
   },
@@ -56,7 +56,7 @@ const projects = [
     title: "EpFindr – Episode Ratings Dashboard",
     description:
       "EpFindr visualizes IMDb ratings for any TV show. Search a show, instantly see the season-by-season episode ratings, and find that one nostalgic episode you vaguely remember.",
-    tech: "Python, IMDbPY, Plotly Dash",
+    tech: "React, JavaScript, Material UI",
     img: "images/tvshow.png",
     link: "https://epfindr.web.app/",
   },
@@ -73,7 +73,7 @@ const projects = [
     title: "Recipe Chat – iOS App",
     description:
       "An iOS app that lets users create recipes interactively using ChatGPT. Input ingredients or instructions, and get structured, shareable recipes.",
-    tech: "Swift, SwiftUI, CoreData",
+    tech: "Swift, SwiftUI, iOS",
     img: "images/recipechat.png",
     link: "https://apps.apple.com/app/recipe-chat/id123456789",
   },
@@ -81,7 +81,7 @@ const projects = [
     title: "Budget Planner – Dashboard",
     description:
       "A custom financial dashboard to track expenses and visualize budgets. Swipe through different views to analyze spending trends and plan your finances.",
-    tech: "React, Chart.js, MUI",
+    tech: "Python, Plotly, Dash",
     images: ["images/budget1.jpg", "images/budget2.jpg", "images/budget3.jpg"],
   },
   {
@@ -134,7 +134,14 @@ export default function App() {
   );
   const [filter, setFilter] = useState("All");
 
-  const techCategories = ["All", "React", "Python", "iOS", "WebGL"];
+  const techCategories = [
+    "All",
+    "Javascript",
+    "Python",
+    "React",
+    "iOS",
+    "WebGL",
+  ];
 
   const filteredProjects = projects.filter((project) =>
     filter === "All"
