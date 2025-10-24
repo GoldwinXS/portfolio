@@ -29,11 +29,9 @@ export default function ProjectCard({ project }) {
         display: "flex",
         flexDirection: "column",
         "&:hover": { transform: "translateY(-6px)" },
-        height: "50rem",
         width: "70rem",
       }}
     >
-      {/* Media container: unified 16:9 ratio */}
       <Box
         sx={{
           position: "relative",

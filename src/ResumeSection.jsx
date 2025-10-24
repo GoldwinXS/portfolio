@@ -72,7 +72,10 @@ export default function ResumeSection() {
         sx={{
           mb: 6,
           p: 3,
-          backgroundColor: "#f0f4ff",
+          backgroundColor: (theme) =>
+            theme.palette.mode === "dark"
+              ? theme.palette.background.paper
+              : "#f9f9f9",
           borderRadius: 2, // less rounded
           textAlign: "center",
         }}
