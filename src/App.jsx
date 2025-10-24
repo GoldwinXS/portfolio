@@ -11,9 +11,6 @@ import {
   Container,
   Box,
   Grid,
-  Card,
-  CardContent,
-  CardMedia,
   Button,
   Divider,
 } from "@mui/material";
@@ -23,16 +20,17 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import ProjectCard from "./ProjectCard";
 import ResumeSection from "./ResumeSection";
 import { useMediaQuery } from "@mui/material";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Typewriter from "./Typewriter";
 import { motion } from "framer-motion";
+import EmailIcon from "@mui/icons-material/Email";
 
 const container = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.4,
+      staggerChildren: 1,
       delayChildren: 2,
     },
   },
@@ -40,7 +38,7 @@ const container = {
 
 const item = {
   hidden: { opacity: 0, y: 10 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  show: { opacity: 1, y: 0, transition: { duration: 1.2 } },
 };
 
 const projects = [
@@ -277,8 +275,6 @@ export default function App() {
         <Divider sx={{ mb: 4 }} />
 
         {/* PROJECTS */}
-
-        {/* PROJECTS */}
         <Container id="projects">
           <Typography variant="h4" gutterBottom>
             Projects
@@ -345,24 +341,30 @@ export default function App() {
           <Typography variant="h4" gutterBottom>
             Contact
           </Typography>
-          <Typography>
-            Email:{" "}
-            <Link href="mailto:goldwin.stewart@gmail.com">
-              goldwin.stewart@gmail.com
+
+          <Box
+            sx={{ display: "flex", justifyContent: "center", gap: 3, mt: 2 }}
+          >
+            <Link href="mailto:goldwin.stewart@gmail.com" color="inherit">
+              <EmailIcon sx={{ fontSize: 40 }} />
             </Link>
-          </Typography>
-          <Typography>
-            LinkedIn:{" "}
-            <Link href="https://www.linkedin.com/in/goldwin-stewart-624765387/">
-              linkedin.com/in/goldwin-ste
+
+            <Link
+              href="https://www.linkedin.com/in/goldwin-stewart-624765387/"
+              target="_blank"
+              color="inherit"
+            >
+              <LinkedInIcon sx={{ fontSize: 40 }} />
             </Link>
-          </Typography>
-          <Typography>
-            GitHub:{" "}
-            <Link href="https://github.com/GoldwinXS">
-              github.com/GoldwinXS
+
+            <Link
+              href="https://github.com/GoldwinXS"
+              target="_blank"
+              color="inherit"
+            >
+              <GitHubIcon sx={{ fontSize: 40 }} />
             </Link>
-          </Typography>
+          </Box>
         </Container>
 
         <Box
