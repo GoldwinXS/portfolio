@@ -265,7 +265,7 @@ export default function App() {
           </Box>
         </Box>
 
-        <Divider sx={{ my: 4 }} />
+        <Divider />
 
         {/* ABOUT */}
         <Container maxWidth="md" sx={{ mb: 8 }}>
@@ -334,7 +334,7 @@ export default function App() {
           </Grid>
         </Container>
 
-        <Divider sx={{ mb: 4 }} />
+        <Divider sx={{ mb: 4, my: 5 }} />
 
         {/* CONTACT */}
         <Container maxWidth="sm" sx={{ mb: 6, textAlign: "center" }}>
