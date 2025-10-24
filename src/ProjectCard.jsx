@@ -29,7 +29,9 @@ export default function ProjectCard({ project }) {
         display: "flex",
         flexDirection: "column",
         "&:hover": { transform: "translateY(-6px)" },
-        width: "70rem",
+        width: "100%",
+        maxWidth: "20rem",
+        margin: "0 auto",
       }}
     >
       <Box

@@ -16,7 +16,6 @@ import {
 } from "@mui/material";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import ProjectCard from "./ProjectCard";
 import ResumeSection from "./ResumeSection";
 import { useMediaQuery } from "@mui/material";
@@ -317,13 +316,13 @@ export default function App() {
               >
                 <motion.div
                   whileHover={
-                    window.innerWidth >= 900 // only scale on md+ screens
+                    window.innerWidth >= 900
                       ? { scale: 1.03, y: -4 }
                       : { boxShadow: "0 0 8px rgba(0,0,0,0.2)" }
                   }
                   transition={{ type: "spring", stiffness: 250 }}
                   style={{
-                    width: "100%", // ✅ ensures it fills its grid cell
+                    width: "100%",
                     height: "100%",
                     display: "flex",
                   }}
