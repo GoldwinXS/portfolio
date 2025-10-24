@@ -214,6 +214,7 @@ export default function App() {
                 height: "100%",
                 pointerEvents: "none",
                 objectFit: "cover",
+                border: 0,
               }}
             />
           </Box>
