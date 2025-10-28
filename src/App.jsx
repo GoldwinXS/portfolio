@@ -281,7 +281,16 @@ export default function App() {
           </Typography>
 
           {/* Filter Buttons */}
-          <Box sx={{ mb: 3, textAlign: "center" }}>
+          <Box
+            sx={{
+              mb: 3,
+              textAlign: "center",
+              display: "flex",
+              justifyContent: "center",
+              flexWrap: "wrap",
+              gap: 1.5,
+            }}
+          >
             {techCategories.map((category) => (
               <Button
                 key={category}
@@ -289,7 +298,6 @@ export default function App() {
                 color="secondary"
                 onClick={() => setFilter(category)}
                 sx={{
-                  mx: 1,
                   borderRadius: 6,
                   textTransform: "none",
                   fontWeight: 500,
