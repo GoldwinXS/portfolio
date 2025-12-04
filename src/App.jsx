@@ -13,6 +13,7 @@ import {
   Grid,
   Button,
   Divider,
+  Paper,
 } from "@mui/material";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
@@ -274,12 +275,37 @@ export default function App() {
         </Container>
 
         <Divider sx={{ mb: 4 }} />
-
         {/* PROJECTS */}
         <Container id="projects">
           <Typography variant="h4" gutterBottom>
             Projects
           </Typography>
+
+          {/* Info Box / Intro */}
+          <Box sx={{ mb: 4, display: "flex", justifyContent: "center", px: 2 }}>
+            <Paper
+              elevation={3}
+              sx={{
+                maxWidth: 800,
+                p: 3,
+                borderRadius: 2,
+                backgroundColor: (theme) =>
+                  theme.palette.mode === "dark" ? "#1f1f1f" : "#f5f5f5",
+              }}
+            >
+              <Typography variant="h6" sx={{ mb: 1, fontWeight: 600 }}>
+                About These Projects
+              </Typography>
+              <Typography variant="body1" sx={{ color: "text.secondary" }}>
+                I code for fun, and here’s a collection of projects I’ve built
+                to learn, experiment, and amuse myself. Some are older, so the
+                code might not be perfect or even publicly available. This isn’t
+                necessarily a showcase of production-ready code — it’s a peek
+                into my curiosity, creativity, and long-standing love for
+                coding.
+              </Typography>
+            </Paper>
+          </Box>
 
           {/* Filter Buttons */}
           <Box
