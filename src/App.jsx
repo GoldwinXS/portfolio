@@ -23,6 +23,7 @@ import { useState } from "react";
 import Typewriter from "./Typewriter";
 import { motion } from "framer-motion";
 import EmailIcon from "@mui/icons-material/Email";
+import HeroBackground from "./HeroBackground";
 
 const container = {
   hidden: { opacity: 0 },
@@ -41,6 +42,13 @@ const item = {
 };
 
 const projects = [
+  {
+    title: "3D OBJ Generator – Coordinate-to-Mesh Tool",
+    description:
+      "A Python utility that converts arbitrary coordinate sets into 3D OBJ mesh files optimized for 3D printing. Can also add a path from GPX file. Will also convert satellite colors into 4 discete colors for 3D printing on an FDM printer.",
+    tech: "Python",
+    img: "images/mapcad.jpg",
+  },
   {
     title: "BBoxLabel – Bounding Box Annotation Tool",
     description:
@@ -203,18 +211,11 @@ export default function App() {
               zIndex: -1,
             }}
           >
-            <iframe
-              src="https://www.youtube.com/embed/ClJe2RUw26A?autoplay=1&mute=1&controls=0&loop=1&playlist=ClJe2RUw26A&modestbranding=1&showinfo=0"
-              title="Hero Background"
-              allow="autoplay; fullscreen"
-              allowFullScreen
-              style={{
-                width: "100%",
-                height: "100%",
-                pointerEvents: "none",
-                objectFit: "cover",
-                border: 0,
-              }}
+            <HeroBackground
+              useVideo={false}
+              // videoUrl="https://www.youtube.com/embed/ClJe2RUw26A?autoplay=1&mute=1&controls=0&loop=1&playlist=ClJe2RUw26A&modestbranding=1&showinfo=0"
+              videoUrl="https://www.youtube.com/embed/RR2EI8EEOOw?autoplay=1&mute=1&controls=0&loop=1&playlist=RR2EI8EEOOw"
+              https:animationType="matrix" //www.youtube.com/embed/RR2EI8EEOOw?autoplay=1&mute=1&controls=0&loop=1&playlist=RR2EI8EEOOw""
             />
           </Box>
 
