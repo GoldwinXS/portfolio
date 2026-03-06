@@ -47,7 +47,7 @@ const projects = [
     description:
       "A Python utility that converts arbitrary coordinate sets into 3D OBJ mesh files optimized for 3D printing. Can also add a path from GPX file. Will also convert satellite colors into 4 discrete colors for 3D printing on an FDM printer.",
     tech: "Python",
-    img: "images/mapcad.jpg",
+    img: "images/mapcad.png",
     imgFallback: "images/placeholder.png",
   },
   {
