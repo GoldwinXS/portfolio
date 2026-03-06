@@ -1,4 +1,5 @@
 import React, { useMemo } from "react";
+import { motion } from "framer-motion";
 import {
   AppBar,
   Toolbar,
@@ -16,13 +17,11 @@ import {
   Paper,
 } from "@mui/material";
 import GitHubIcon from "@mui/icons-material/GitHub";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import ProjectCard from "./ProjectCard";
 import ResumeSection from "./ResumeSection";
 import { useMediaQuery } from "@mui/material";
 import { useState } from "react";
 import Typewriter from "./Typewriter";
-import { motion } from "framer-motion";
 import EmailIcon from "@mui/icons-material/Email";
 import HeroBackground from "./HeroBackground";
 
@@ -46,9 +45,10 @@ const projects = [
   {
     title: "3D OBJ Generator – Coordinate-to-Mesh Tool",
     description:
-      "A Python utility that converts arbitrary coordinate sets into 3D OBJ mesh files optimized for 3D printing. Can also add a path from GPX file. Will also convert satellite colors into 4 discete colors for 3D printing on an FDM printer.",
+      "A Python utility that converts arbitrary coordinate sets into 3D OBJ mesh files optimized for 3D printing. Can also add a path from GPX file. Will also convert satellite colors into 4 discrete colors for 3D printing on an FDM printer.",
     tech: "Python",
     img: "images/mapcad.jpg",
+    imgFallback: "images/placeholder.png",
   },
   {
     title: "BBoxLabel – Bounding Box Annotation Tool",
@@ -81,7 +81,6 @@ const projects = [
       "An iOS app that lets users create recipes interactively using ChatGPT. Input ingredients or instructions, and get structured, shareable recipes.",
     tech: "Swift, SwiftUI, iOS",
     img: "images/recipechat.png",
-    link: "https://apps.apple.com/app/recipe-chat/id123456789",
   },
   {
     title: "Budget Planner – Dashboard",
@@ -136,7 +135,7 @@ export default function App() {
         },
         shape: { borderRadius: 16 },
       }),
-    [prefersDarkMode]
+    [prefersDarkMode],
   );
   const [filter, setFilter] = useState("All");
 
@@ -152,7 +151,7 @@ export default function App() {
   const filteredProjects = projects.filter((project) =>
     filter === "All"
       ? true
-      : project.tech.toLowerCase().includes(filter.toLowerCase())
+      : project.tech.toLowerCase().includes(filter.toLowerCase()),
   );
 
   return (
@@ -177,14 +176,6 @@ export default function App() {
             >
               <GitHubIcon />
             </IconButton>
-            <IconButton
-              color="inherit"
-              component={Link}
-              href="https://linkedin.com/in/goldwin-ste"
-              target="_blank"
-            >
-              <LinkedInIcon />
-            </IconButton>
           </Toolbar>
         </AppBar>
 
@@ -200,7 +191,6 @@ export default function App() {
             overflow: "hidden",
           }}
         >
-          {/* YouTube background */}
           <Box
             sx={{
               position: "absolute",
@@ -214,9 +204,8 @@ export default function App() {
           >
             <HeroBackground
               useVideo={false}
-              // videoUrl="https://www.youtube.com/embed/ClJe2RUw26A?autoplay=1&mute=1&controls=0&loop=1&playlist=ClJe2RUw26A&modestbranding=1&showinfo=0"
               videoUrl="https://www.youtube.com/embed/RR2EI8EEOOw?autoplay=1&mute=1&controls=0&loop=1&playlist=RR2EI8EEOOw"
-              https:animationType="matrix" //www.youtube.com/embed/RR2EI8EEOOw?autoplay=1&mute=1&controls=0&loop=1&playlist=RR2EI8EEOOw""
+              animationType="matrix"
             />
           </Box>
 
@@ -297,10 +286,10 @@ export default function App() {
                 About These Projects
               </Typography>
               <Typography variant="body1" sx={{ color: "text.secondary" }}>
-                I code for fun, and here’s a collection of projects I’ve built
+                I code for fun, and here's a collection of projects I've built
                 to learn, experiment, and amuse myself. Some are older, so the
-                code might not be perfect or even publicly available. This isn’t
-                necessarily a showcase of production-ready code — it’s a peek
+                code might not be perfect or even publicly available. This isn't
+                necessarily a showcase of production-ready code — it's a peek
                 into my curiosity, creativity, and long-standing love for
                 coding.
               </Typography>
@@ -382,14 +371,6 @@ export default function App() {
           >
             <Link href="mailto:goldwin.stewart@gmail.com" color="inherit">
               <EmailIcon sx={{ fontSize: 40 }} />
-            </Link>
-
-            <Link
-              href="https://www.linkedin.com/in/goldwin-stewart-624765387/"
-              target="_blank"
-              color="inherit"
-            >
-              <LinkedInIcon sx={{ fontSize: 40 }} />
             </Link>
 
             <Link
