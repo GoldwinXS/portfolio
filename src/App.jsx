@@ -97,6 +97,14 @@ const projects = [
     img: "images/yolo.png",
   },
   {
+    title: "Portfolio Website",
+    description:
+      "This site. Built with React, Material UI, and Framer Motion. Supports dark/light mode based on system preference, filterable project cards, and an animated hero section.",
+    tech: "React, JavaScript, Material UI",
+    img: "images/portfolio.png",
+    link: "https://github.com/GoldwinXS/portfolio",
+  },
+  {
     title: "Real-Time Ray Tracing Browser Engine",
     description:
       "Experimental WebGL-based ray tracer running in the browser at 120fps. Explores GPU parallelization in GLSL and optimized BVH structures.",
