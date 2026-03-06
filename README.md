@@ -2,6 +2,8 @@
 
 Personal portfolio site built with React and Vite. Features a filterable project gallery, animated hero section, and dark/light mode based on system preference.
 
+![Portfolio Preview](public/images/portfolio.png)
+
 ## Tech Stack
 
 - React + Vite
