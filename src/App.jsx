@@ -51,6 +51,14 @@ const projects = [
     imgFallback: "images/placeholder.png",
   },
   {
+    title: "Vector - Tank Game",
+    description: "A little tank game made for fun!",
+    tech: "Python",
+    img: "images/vector.png",
+    imgFallback: "images/placeholder.png",
+    link: "https://goldwinxs.github.io/VectorTankGame/",
+  },
+  {
     title: "BBoxLabel – Bounding Box Annotation Tool",
     description:
       "A lightweight web app for labeling bounding boxes for computer vision datasets. Built to make dataset preparation easy and fast for YOLO and other CV models.",
