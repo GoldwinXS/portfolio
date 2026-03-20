@@ -4,6 +4,7 @@ export default function HeroBackground({
   useVideo = true,
   videoUrl,
   animationType = "matrix",
+  isDarkMode = true,
 }) {
   const canvasRef = useRef(null);
 
@@ -19,11 +20,14 @@ export default function HeroBackground({
     const drops = Array(columns).fill(1);
     const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
+    const bgFill = isDarkMode ? "rgba(0,0,0,0.05)" : "rgba(10,20,60,0.07)";
+    const charColor = "#0071e3";
+
     function draw() {
-      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+      ctx.fillStyle = bgFill;
       ctx.fillRect(0, 0, width, height);
 
-      ctx.fillStyle = "#0F0";
+      ctx.fillStyle = charColor;
       ctx.font = "16px monospace";
 
       for (let i = 0; i < drops.length; i++) {
@@ -46,7 +50,7 @@ export default function HeroBackground({
       clearInterval(interval);
       window.removeEventListener("resize", handleResize);
     };
-  }, [useVideo, animationType]);
+  }, [useVideo, animationType, isDarkMode]);
 
   return (
     <div

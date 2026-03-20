@@ -2,7 +2,6 @@ import { useState } from "react";
 import {
   Card,
   CardContent,
-  CardMedia,
   Typography,
   Button,
   Box,
@@ -39,10 +38,11 @@ export default function ProjectCard({ project }) {
     >
       <Box
         sx={{
-          position: "relative",
           width: "100%",
-          pt: "56.25%",
+          height: "200px",
           overflow: "hidden",
+          position: "relative",
+          flexShrink: 0,
         }}
       >
         {/* Video */}
@@ -66,17 +66,13 @@ export default function ProjectCard({ project }) {
         {/* Carousel */}
         {!project.video && isCarousel && (
           <>
-            <CardMedia
-              component="img"
-              image={project.images[slide]}
-              alt={project.title}
+            <Box
               sx={{
                 position: "absolute",
-                top: 0,
-                left: 0,
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
+                inset: 0,
+                backgroundImage: `url(${project.images[slide]})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
               }}
             />
             {project.images.length > 1 && (
@@ -112,39 +108,17 @@ export default function ProjectCard({ project }) {
           </>
         )}
 
-        {/* Single image with blurred background */}
+        {/* Single image */}
         {!project.video && !isCarousel && project.img && (
-          <>
-            <Box
-              component="img"
-              src={project.img}
-              alt={project.title}
-              sx={{
-                position: "absolute",
-                top: 0,
-                left: 0,
-                width: "100%",
-                height: "100%",
-                filter: "blur(20px) brightness(0.5)",
-                objectFit: "cover",
-                transform: "scale(1.1)",
-              }}
-            />
-            <CardMedia
-              component="img"
-              image={project.img}
-              alt={project.title}
-              sx={{
-                position: "absolute",
-                top: 0,
-                left: 0,
-                width: "100%",
-                height: "100%",
-                objectFit: "contain",
-                zIndex: 1,
-              }}
-            />
-          </>
+          <Box
+            sx={{
+              position: "absolute",
+              inset: 0,
+              backgroundImage: `url(${project.img})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          />
         )}
       </Box>
 

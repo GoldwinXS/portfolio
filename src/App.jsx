@@ -11,7 +11,7 @@ import {
   createTheme,
   Container,
   Box,
-  Grid,
+
   Button,
   Divider,
   Paper,
@@ -237,10 +237,11 @@ export default function App() {
               useVideo={false}
               videoUrl="https://www.youtube.com/embed/RR2EI8EEOOw?autoplay=1&mute=1&controls=0&loop=1&playlist=RR2EI8EEOOw"
               animationType="matrix"
+              isDarkMode={prefersDarkMode}
             />
           </Box>
 
-          {/* Overlay for better text readability */}
+          {/* Overlay for text readability */}
           <Box
             sx={{
               position: "absolute",
@@ -248,12 +249,28 @@ export default function App() {
               left: 0,
               width: "100%",
               height: "100%",
-              background: "rgba(0, 0, 0, 0.45)",
+              background: prefersDarkMode
+                ? "rgba(0, 0, 0, 0.5)"
+                : "rgba(10, 20, 60, 0.65)",
               zIndex: -1,
             }}
           />
 
-          <Box sx={{ color: "white", px: 2 }}>
+          {/* Bottom gradient fade into page background */}
+          <Box
+            sx={{
+              position: "absolute",
+              bottom: 0,
+              left: 0,
+              width: "100%",
+              height: "140px",
+              background: (theme) =>
+                `linear-gradient(to bottom, transparent, ${theme.palette.background.default})`,
+              zIndex: 1,
+            }}
+          />
+
+          <Box sx={{ color: "white", px: 2, position: "relative", zIndex: 2 }}>
             <motion.div
               initial={{ opacity: 0, scale: 0.98 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -297,20 +314,19 @@ export default function App() {
         <Divider sx={{ mb: 4 }} />
         {/* PROJECTS */}
         <Container id="projects">
-          <Box
-            sx={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 2,
-              mb: 3,
-              pb: 1,
-              borderBottom: "3px solid",
-              borderBottomColor: "secondary.main",
-            }}
-          >
-            <Typography variant="h4" sx={{ fontWeight: 700 }}>
-              Projects
-            </Typography>
+          <Box sx={{ textAlign: "center", mb: 3 }}>
+            <Box
+              sx={{
+                display: "inline-block",
+                pb: 1,
+                borderBottom: "3px solid",
+                borderBottomColor: "secondary.main",
+              }}
+            >
+              <Typography variant="h4" sx={{ fontWeight: 700 }}>
+                Projects
+              </Typography>
+            </Box>
           </Box>
 
           {/* Info Box / Intro */}
@@ -371,15 +387,18 @@ export default function App() {
           </Box>
 
           {/* Projects Grid */}
-          <Grid container spacing={4} justifyContent="center">
+          <Box
+            sx={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: 3,
+              justifyContent: "center",
+            }}
+          >
             {filteredProjects.map((project, index) => (
-              <Grid
-                item
+              <Box
                 key={index}
-                xs={12}
-                sm={6}
-                md={4}
-                sx={{ display: "flex" }}
+                sx={{ width: { xs: "100%", sm: "320px" } }}
               >
                 <motion.div
                   whileHover={
@@ -388,37 +407,32 @@ export default function App() {
                       : { boxShadow: "0 0 8px rgba(0,0,0,0.2)" }
                   }
                   transition={{ type: "spring", stiffness: 250 }}
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    display: "flex",
-                  }}
+                  style={{ width: "100%", height: "100%", display: "flex" }}
                 >
                   <ProjectCard project={project} />
                 </motion.div>
-              </Grid>
+              </Box>
             ))}
-          </Grid>
+          </Box>
         </Container>
 
         <Divider sx={{ mb: 4, my: 5 }} />
 
         {/* CONTACT */}
         <Container maxWidth="sm" sx={{ mb: 6, textAlign: "center" }}>
-          <Box
-            sx={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 2,
-              mb: 3,
-              pb: 1,
-              borderBottom: "3px solid",
-              borderBottomColor: "secondary.main",
-            }}
-          >
-            <Typography variant="h4" sx={{ fontWeight: 700 }}>
-              Contact
-            </Typography>
+          <Box sx={{ mb: 3 }}>
+            <Box
+              sx={{
+                display: "inline-block",
+                pb: 1,
+                borderBottom: "3px solid",
+                borderBottomColor: "secondary.main",
+              }}
+            >
+              <Typography variant="h4" sx={{ fontWeight: 700 }}>
+                Contact
+              </Typography>
+            </Box>
           </Box>
 
           <Box
