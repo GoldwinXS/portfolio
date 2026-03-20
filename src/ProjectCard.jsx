@@ -112,39 +112,21 @@ export default function ProjectCard({ project }) {
           </>
         )}
 
-        {/* Single image with blurred background */}
+        {/* Single image */}
         {!project.video && !isCarousel && project.img && (
-          <>
-            <Box
-              component="img"
-              src={project.img}
-              alt={project.title}
-              sx={{
-                position: "absolute",
-                top: 0,
-                left: 0,
-                width: "100%",
-                height: "100%",
-                filter: "blur(20px) brightness(0.5)",
-                objectFit: "cover",
-                transform: "scale(1.1)",
-              }}
-            />
-            <CardMedia
-              component="img"
-              image={project.img}
-              alt={project.title}
-              sx={{
-                position: "absolute",
-                top: 0,
-                left: 0,
-                width: "100%",
-                height: "100%",
-                objectFit: "contain",
-                zIndex: 1,
-              }}
-            />
-          </>
+          <CardMedia
+            component="img"
+            image={project.img}
+            alt={project.title}
+            sx={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+            }}
+          />
         )}
       </Box>
 
