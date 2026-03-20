@@ -7,9 +7,11 @@ import {
   Button,
   Box,
   IconButton,
+  Chip,
 } from "@mui/material";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 
 export default function ProjectCard({ project }) {
   const [slide, setSlide] = useState(0);
@@ -28,10 +30,11 @@ export default function ProjectCard({ project }) {
       sx={{
         display: "flex",
         flexDirection: "column",
-        "&:hover": { transform: "translateY(-6px)" },
         width: "100%",
-        maxWidth: "20rem",
-        margin: "0 auto",
+        borderTop: "3px solid",
+        borderTopColor: "secondary.main",
+        transition: "box-shadow 0.2s ease",
+        "&:hover": { boxShadow: 8 },
       }}
     >
       <Box
@@ -150,21 +153,33 @@ export default function ProjectCard({ project }) {
         <Typography variant="h6" gutterBottom>
           {project.title}
         </Typography>
-        <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
+        <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
           {project.description}
         </Typography>
-        <Typography variant="caption" color="text.secondary">
-          {project.tech}
-        </Typography>
+        <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.75 }}>
+          {project.tech.split(",").map((t) => (
+            <Chip
+              key={t}
+              label={t.trim()}
+              size="small"
+              color="secondary"
+              variant="outlined"
+              sx={{ borderRadius: 1, fontSize: "0.7rem", height: 22 }}
+            />
+          ))}
+        </Box>
       </CardContent>
 
       {project.link && (
         <Box sx={{ p: 2, pt: 0 }}>
           <Button
             size="small"
+            variant="outlined"
             color="secondary"
             href={project.link}
             target="_blank"
+            endIcon={<OpenInNewIcon fontSize="inherit" />}
+            sx={{ borderRadius: 2, textTransform: "none", fontWeight: 500 }}
           >
             View Project
           </Button>

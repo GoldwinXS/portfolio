@@ -54,7 +54,7 @@ const projects = [
     title: "Vector - Tank Game",
     description: "A little tank game made for fun!",
     tech: "Python",
-    img: "images/vector.png",
+    img: "images/vector.jpg",
     imgFallback: "images/placeholder.jpg",
     link: "https://goldwinxs.github.io/VectorTankGame/",
   },
@@ -179,7 +179,22 @@ export default function App() {
       >
         <CssBaseline />
         {/* NAVBAR */}
-        <AppBar position="static" elevation={0} color="transparent">
+        <AppBar
+          position="sticky"
+          elevation={0}
+          color="transparent"
+          sx={{
+            backdropFilter: "blur(20px)",
+            WebkitBackdropFilter: "blur(20px)",
+            borderBottom: "1px solid",
+            borderBottomColor: "divider",
+            backgroundColor: (theme) =>
+              theme.palette.mode === "dark"
+                ? "rgba(13, 17, 23, 0.8)"
+                : "rgba(245, 245, 247, 0.8)",
+            zIndex: 1100,
+          }}
+        >
           <Toolbar>
             <Typography variant="h6" sx={{ flexGrow: 1, fontWeight: 600 }}>
               Goldwin Stewart
@@ -282,9 +297,21 @@ export default function App() {
         <Divider sx={{ mb: 4 }} />
         {/* PROJECTS */}
         <Container id="projects">
-          <Typography variant="h4" gutterBottom>
-            Projects
-          </Typography>
+          <Box
+            sx={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 2,
+              mb: 3,
+              pb: 1,
+              borderBottom: "3px solid",
+              borderBottomColor: "secondary.main",
+            }}
+          >
+            <Typography variant="h4" sx={{ fontWeight: 700 }}>
+              Projects
+            </Typography>
+          </Box>
 
           {/* Info Box / Intro */}
           <Box sx={{ mb: 4, display: "flex", justifyContent: "center", px: 2 }}>
@@ -378,23 +405,60 @@ export default function App() {
 
         {/* CONTACT */}
         <Container maxWidth="sm" sx={{ mb: 6, textAlign: "center" }}>
-          <Typography variant="h4" gutterBottom>
-            Contact
-          </Typography>
+          <Box
+            sx={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 2,
+              mb: 3,
+              pb: 1,
+              borderBottom: "3px solid",
+              borderBottomColor: "secondary.main",
+            }}
+          >
+            <Typography variant="h4" sx={{ fontWeight: 700 }}>
+              Contact
+            </Typography>
+          </Box>
 
           <Box
-            sx={{ display: "flex", justifyContent: "center", gap: 3, mt: 2 }}
+            sx={{ display: "flex", justifyContent: "center", gap: 4, mt: 2 }}
           >
-            <Link href="mailto:goldwin.stewart@gmail.com" color="inherit">
-              <EmailIcon sx={{ fontSize: 40 }} />
+            <Link
+              href="mailto:goldwin.stewart@gmail.com"
+              color="inherit"
+              underline="none"
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                gap: 0.5,
+                opacity: 0.8,
+                transition: "opacity 0.2s",
+                "&:hover": { opacity: 1 },
+              }}
+            >
+              <EmailIcon sx={{ fontSize: 36 }} />
+              <Typography variant="caption">Email</Typography>
             </Link>
 
             <Link
               href="https://github.com/GoldwinXS"
               target="_blank"
               color="inherit"
+              underline="none"
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                gap: 0.5,
+                opacity: 0.8,
+                transition: "opacity 0.2s",
+                "&:hover": { opacity: 1 },
+              }}
             >
-              <GitHubIcon sx={{ fontSize: 40 }} />
+              <GitHubIcon sx={{ fontSize: 36 }} />
+              <Typography variant="caption">GitHub</Typography>
             </Link>
           </Box>
         </Container>
