@@ -55,7 +55,7 @@ const projects = [
     description: "A little tank game made for fun!",
     tech: "Python",
     img: "images/vector.png",
-    imgFallback: "images/placeholder.png",
+    imgFallback: "images/placeholder.jpg",
     link: "https://goldwinxs.github.io/VectorTankGame/",
   },
   {
