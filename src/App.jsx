@@ -295,30 +295,55 @@ export default function App() {
               </motion.div>
               <motion.div variants={item}>
                 <Box sx={{ display: "flex", gap: 2, justifyContent: "center", flexWrap: "wrap" }}>
+                  {/* Primary CTA — tinted glass */}
                   <Button
-                    variant="contained"
-                    color="secondary"
+                    variant="text"
                     href="#projects"
-                    sx={{ borderRadius: 8, px: 3, py: 1.5 }}
+                    sx={{
+                      borderRadius: 8, px: 3, py: 1.5,
+                      textTransform: "none", fontWeight: 600, fontSize: "1rem",
+                      backdropFilter: "blur(24px) saturate(180%)",
+                      WebkitBackdropFilter: "blur(24px) saturate(180%)",
+                      backgroundColor: prefersDarkMode
+                        ? "rgba(0,113,227,0.35)"
+                        : "rgba(0,113,227,0.18)",
+                      border: "1px solid",
+                      borderColor: prefersDarkMode
+                        ? "rgba(120,180,255,0.4)"
+                        : "rgba(0,113,227,0.35)",
+                      color: prefersDarkMode ? "white" : "#0058b8",
+                      boxShadow: "0 2px 16px rgba(0,113,227,0.2)",
+                      "&:hover": {
+                        backgroundColor: prefersDarkMode
+                          ? "rgba(0,113,227,0.5)"
+                          : "rgba(0,113,227,0.28)",
+                      },
+                    }}
                   >
                     Personal Projects
                   </Button>
+                  {/* Secondary CTA — neutral glass */}
                   <Button
-                    variant="outlined"
+                    variant="text"
                     href="#experience"
                     sx={{
-                      borderRadius: 8,
-                      px: 3,
-                      py: 1.5,
-                      color: prefersDarkMode ? "white" : "text.primary",
+                      borderRadius: 8, px: 3, py: 1.5,
+                      textTransform: "none", fontWeight: 600, fontSize: "1rem",
+                      backdropFilter: "blur(24px) saturate(180%)",
+                      WebkitBackdropFilter: "blur(24px) saturate(180%)",
+                      backgroundColor: prefersDarkMode
+                        ? "rgba(255,255,255,0.1)"
+                        : "rgba(255,255,255,0.55)",
+                      border: "1px solid",
                       borderColor: prefersDarkMode
-                        ? "rgba(255,255,255,0.6)"
-                        : "rgba(0,0,0,0.35)",
+                        ? "rgba(255,255,255,0.2)"
+                        : "rgba(255,255,255,0.85)",
+                      color: prefersDarkMode ? "rgba(255,255,255,0.9)" : "rgba(0,0,0,0.75)",
+                      boxShadow: "0 2px 16px rgba(0,0,0,0.08)",
                       "&:hover": {
-                        borderColor: prefersDarkMode ? "white" : "rgba(0,0,0,0.8)",
-                        bgcolor: prefersDarkMode
-                          ? "rgba(255,255,255,0.08)"
-                          : "rgba(0,0,0,0.04)",
+                        backgroundColor: prefersDarkMode
+                          ? "rgba(255,255,255,0.18)"
+                          : "rgba(255,255,255,0.78)",
                       },
                     }}
                   >
