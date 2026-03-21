@@ -148,7 +148,8 @@ export default function ResumeSection() {
 
           {/* Card */}
           <Box sx={{ flexGrow: 1, pb: index < experience.length - 1 ? 2 : 0 }}>
-            <Card elevation={2} sx={{
+            <Card elevation={2} onClick={() => toggle(index)} sx={{
+              cursor: "pointer",
               border: "1px solid",
               borderColor: (theme) =>
                 theme.palette.mode === "dark"
@@ -175,7 +176,7 @@ export default function ResumeSection() {
                     <Typography variant="caption" color="text.disabled" sx={{ whiteSpace: "nowrap" }}>
                       {exp.period}
                     </Typography>
-                    <IconButton size="small" onClick={() => toggle(index)}>
+                    <IconButton size="small" tabIndex={-1} sx={{ pointerEvents: "none" }}>
                       {openIndex === index ? <ExpandLessIcon fontSize="small" /> : <ExpandMoreIcon fontSize="small" />}
                     </IconButton>
                   </Box>

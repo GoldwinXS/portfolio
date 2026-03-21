@@ -20,6 +20,18 @@ export default function HeroBackground({
     const drops = Array(columns).fill(1);
     const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
+    const words = [
+      "REACT", "DJANGO", "PYTHON", "DOCKER", "GCP",
+      "JAVASCRIPT", "MYSQL", "GITHUB", "SWIFT", "WEBGL",
+      "GLSL", "PLOTLY", "CICD", "NLP", "ML",
+      "VECTOR", "RAYTRACE", "YOLO", "FULLSTACK",
+      "TENSORFLOW", "KERAS", "THREEJS", "AGILE",
+    ];
+
+    // Per-column word state
+    const colWord = new Array(columns).fill(null);
+    const colWordPos = new Array(columns).fill(0);
+
     // Solid initial fill so there's no flash on first frame
     ctx.fillStyle = isDarkMode ? "#0d1117" : "#f5f5f7";
     ctx.fillRect(0, 0, width, height);
@@ -35,10 +47,27 @@ export default function HeroBackground({
       ctx.font = "16px monospace";
 
       for (let i = 0; i < drops.length; i++) {
-        const text = chars.charAt(Math.floor(Math.random() * chars.length));
+        // Draw next char from active word, or a random char
+        let text;
+        if (colWord[i] !== null && colWordPos[i] < colWord[i].length) {
+          text = colWord[i][colWordPos[i]];
+          colWordPos[i]++;
+        } else {
+          colWord[i] = null;
+          text = chars.charAt(Math.floor(Math.random() * chars.length));
+        }
+
         ctx.fillText(text, i * 20, drops[i] * 20);
         drops[i]++;
-        if (drops[i] * 20 > height && Math.random() > 0.975) drops[i] = 0;
+
+        if (drops[i] * 20 > height && Math.random() > 0.975) {
+          drops[i] = 0;
+          // ~35% of resets begin spelling a word
+          if (Math.random() > 0.65) {
+            colWord[i] = words[Math.floor(Math.random() * words.length)];
+            colWordPos[i] = 0;
+          }
+        }
       }
     }
 
