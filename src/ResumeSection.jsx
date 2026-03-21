@@ -7,9 +7,11 @@ import {
   Chip,
   Collapse,
   IconButton,
+  Link,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
+import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 
 const coreSkills = [
   "Python", "Django", "React", "JavaScript", "HTML/CSS",
@@ -66,6 +68,30 @@ const experience = [
       "Contributed to NLP pipelines, schema design, and front-end data presentation.",
     ],
     tech: ["Python", "Machine Learning", "NLP"],
+  },
+];
+
+const otherExperience = [
+  {
+    title: "Class Afloat — STS Sørlandet",
+    role: "Deck Hand",
+    period: "2011 – 2012",
+    description: "Sailed a traditional square-rigged tall ship across the Atlantic. Maintained vessel rigging and participated in community volunteer work in Senegal and the Dominican Republic.",
+    url: "https://www.classafloat.com/",
+  },
+  {
+    title: "Fort Henry National Historic Site",
+    role: "Military Heritage Interpreter",
+    period: "Summers 2013 – 2016",
+    description: "Delivered bilingual (EN/FR) historical tours, drill demonstrations, and public interpretive programming at a National Historic Site in Kingston.",
+    url: "https://www.forthenry.com/",
+  },
+  {
+    title: "AXIS Prototypes",
+    role: "Inside Technical Sales",
+    period: "2017 – 2019",
+    description: "Consulted clients bilingually on SLS, SLA, and FDM 3D-printing prototypes. Supported CRM/ERP adoption alongside engineers and finishing technicians.",
+    url: "https://www.axisproto.com/",
   },
 ];
 
@@ -205,6 +231,57 @@ export default function ResumeSection() {
           </Box>
         </Box>
       ))}
+
+      {/* Beyond the Code */}
+      <Box sx={{ mt: 5 }}>
+        <Typography variant="overline" color="text.secondary" display="block" sx={{ mb: 2 }}>
+          Beyond the Code
+        </Typography>
+        <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap" }}>
+          {otherExperience.map((item) => (
+            <Card
+              key={item.title}
+              elevation={1}
+              sx={{
+                flex: "1 1 220px",
+                backgroundColor: (theme) =>
+                  theme.palette.mode === "dark"
+                    ? "rgba(255,255,255,0.02)"
+                    : "rgba(255,255,255,0.5)",
+                backdropFilter: "blur(8px)",
+                WebkitBackdropFilter: "blur(8px)",
+                border: "1px solid",
+                borderColor: (theme) =>
+                  theme.palette.mode === "dark"
+                    ? "rgba(255,255,255,0.06)"
+                    : "rgba(255,255,255,0.8)",
+              }}
+            >
+              <CardContent sx={{ p: 2, "&:last-child": { pb: 2 } }}>
+                <Link
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener"
+                  underline="hover"
+                  color="text.primary"
+                  sx={{ display: "inline-flex", alignItems: "center", gap: 0.5, mb: 0.25 }}
+                >
+                  <Typography variant="subtitle2" fontWeight={600} component="span">
+                    {item.title}
+                  </Typography>
+                  <OpenInNewIcon sx={{ fontSize: 12, opacity: 0.5 }} />
+                </Link>
+                <Typography variant="caption" color="text.disabled" display="block" sx={{ mb: 1 }}>
+                  {item.role} · {item.period}
+                </Typography>
+                <Typography variant="body2" color="text.secondary" sx={{ fontSize: "0.78rem" }}>
+                  {item.description}
+                </Typography>
+              </CardContent>
+            </Card>
+          ))}
+        </Box>
+      </Box>
     </Box>
   );
 }
