@@ -145,35 +145,49 @@ export default function ProjectCard({ project }) {
         </Box>
       </CardContent>
 
-      {(project.link || project.github) && (
-        <Box sx={{ p: 2, pt: 0, display: "flex", gap: 1, flexWrap: "wrap" }}>
-          {project.link && (
-            <Button
-              size="small"
-              variant="outlined"
-              color="secondary"
-              href={project.link}
-              target="_blank"
-              endIcon={<OpenInNewIcon fontSize="inherit" />}
-              sx={{ borderRadius: 2, textTransform: "none", fontWeight: 500 }}
-            >
-              Live Demo
-            </Button>
-          )}
-          {project.github && (
-            <Button
-              size="small"
-              variant="outlined"
-              href={project.github}
-              target="_blank"
-              endIcon={<GitHubIcon fontSize="inherit" />}
-              sx={{ borderRadius: 2, textTransform: "none", fontWeight: 500 }}
-            >
-              GitHub
-            </Button>
-          )}
-        </Box>
-      )}
+      <Box sx={{ p: 2, pt: 0, display: "flex", gap: 1, flexWrap: "wrap", alignItems: "center" }}>
+        {project.link && (
+          <Button
+            size="small"
+            variant="contained"
+            color="secondary"
+            href={project.link}
+            target="_blank"
+            endIcon={<OpenInNewIcon fontSize="inherit" />}
+            sx={{ borderRadius: 2, textTransform: "none", fontWeight: 600 }}
+          >
+            Live Demo
+          </Button>
+        )}
+        {project.github && (
+          <Button
+            size="small"
+            variant="contained"
+            href={project.github}
+            target="_blank"
+            endIcon={<GitHubIcon fontSize="inherit" />}
+            sx={{
+              borderRadius: 2,
+              textTransform: "none",
+              fontWeight: 600,
+              bgcolor: "action.selected",
+              color: "text.primary",
+              boxShadow: "none",
+              "&:hover": { bgcolor: "action.hover", boxShadow: "none" },
+            }}
+          >
+            GitHub
+          </Button>
+        )}
+        {!project.link && !project.github && (
+          <Typography
+            variant="caption"
+            sx={{ color: "text.disabled", fontStyle: "italic" }}
+          >
+            Ancient project — code not available
+          </Typography>
+        )}
+      </Box>
     </Card>
   );
 }

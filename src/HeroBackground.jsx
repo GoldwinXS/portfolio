@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 
 export default function HeroBackground({
   useVideo = true,
@@ -20,8 +20,12 @@ export default function HeroBackground({
     const drops = Array(columns).fill(1);
     const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
-    const bgFill = isDarkMode ? "rgba(0,0,0,0.05)" : "rgba(10,20,60,0.07)";
-    const charColor = "#67e8f9";
+    // Solid initial fill so there's no white flash on first frame
+    ctx.fillStyle = isDarkMode ? "#0d1117" : "#0a1440";
+    ctx.fillRect(0, 0, width, height);
+
+    const bgFill = isDarkMode ? "rgba(13,17,23,0.05)" : "rgba(10,20,64,0.06)";
+    const charColor = isDarkMode ? "#67e8f9" : "rgba(255,255,255,0.75)";
 
     function draw() {
       ctx.fillStyle = bgFill;
