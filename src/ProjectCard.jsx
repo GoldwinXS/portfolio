@@ -11,6 +11,7 @@ import {
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
+import GitHubIcon from "@mui/icons-material/GitHub";
 
 export default function ProjectCard({ project }) {
   const [slide, setSlide] = useState(0);
@@ -144,19 +145,33 @@ export default function ProjectCard({ project }) {
         </Box>
       </CardContent>
 
-      {project.link && (
-        <Box sx={{ p: 2, pt: 0 }}>
-          <Button
-            size="small"
-            variant="outlined"
-            color="secondary"
-            href={project.link}
-            target="_blank"
-            endIcon={<OpenInNewIcon fontSize="inherit" />}
-            sx={{ borderRadius: 2, textTransform: "none", fontWeight: 500 }}
-          >
-            View Project
-          </Button>
+      {(project.link || project.github) && (
+        <Box sx={{ p: 2, pt: 0, display: "flex", gap: 1, flexWrap: "wrap" }}>
+          {project.link && (
+            <Button
+              size="small"
+              variant="outlined"
+              color="secondary"
+              href={project.link}
+              target="_blank"
+              endIcon={<OpenInNewIcon fontSize="inherit" />}
+              sx={{ borderRadius: 2, textTransform: "none", fontWeight: 500 }}
+            >
+              Live Demo
+            </Button>
+          )}
+          {project.github && (
+            <Button
+              size="small"
+              variant="outlined"
+              href={project.github}
+              target="_blank"
+              endIcon={<GitHubIcon fontSize="inherit" />}
+              sx={{ borderRadius: 2, textTransform: "none", fontWeight: 500 }}
+            >
+              GitHub
+            </Button>
+          )}
         </Box>
       )}
     </Card>

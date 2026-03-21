@@ -57,6 +57,7 @@ const projects = [
     img: "images/vector.jpg",
     imgFallback: "images/placeholder.jpg",
     link: "https://goldwinxs.github.io/VectorTankGame/",
+    github: "https://github.com/GoldwinXS/VectorTankGame",
   },
   {
     title: "BBoxLabel – Bounding Box Annotation Tool",
@@ -64,7 +65,7 @@ const projects = [
       "A lightweight web app for labeling bounding boxes for computer vision datasets. Built to make dataset preparation easy and fast for YOLO and other CV models.",
     tech: "Python",
     img: "images/bboxlabel.png",
-    link: "https://github.com/GoldwinXS/bboxlabel",
+    github: "https://github.com/GoldwinXS/bboxlabel",
   },
   {
     title: "EpFindr – Episode Ratings Dashboard",
@@ -81,7 +82,7 @@ const projects = [
     tech: "Python, Pygame",
     video:
       "https://www.youtube.com/embed/ow2RdiiKJCg?autoplay=1&mute=1&controls=0&loop=1&playlist=ow2RdiiKJCg&modestbranding=1",
-    link: "https://github.com/GoldwinXS/pycraft",
+    github: "https://github.com/GoldwinXS/pycraft",
   },
   {
     title: "Recipe Chat – iOS App",
@@ -110,7 +111,7 @@ const projects = [
       "This site. Built with React, Material UI, and Framer Motion. Supports dark/light mode based on system preference, filterable project cards, and an animated hero section.",
     tech: "React, JavaScript, Material UI",
     img: "images/portfolio.png",
-    link: "https://github.com/GoldwinXS/portfolio",
+    github: "https://github.com/GoldwinXS/portfolio",
   },
   {
     title: "Real-Time Ray Tracing Browser Engine",
@@ -303,8 +304,6 @@ export default function App() {
             </motion.div>
           </Box>
         </Box>
-
-        <Divider />
 
         {/* ABOUT */}
         <Container maxWidth="md" sx={{ mb: 8 }}>

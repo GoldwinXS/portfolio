@@ -21,7 +21,7 @@ export default function HeroBackground({
     const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
     const bgFill = isDarkMode ? "rgba(0,0,0,0.05)" : "rgba(10,20,60,0.07)";
-    const charColor = "#0071e3";
+    const charColor = "#67e8f9";
 
     function draw() {
       ctx.fillStyle = bgFill;
