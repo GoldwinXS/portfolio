@@ -20,12 +20,12 @@ export default function HeroBackground({
     const drops = Array(columns).fill(1);
     const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
-    // Solid initial fill so there's no white flash on first frame
-    ctx.fillStyle = isDarkMode ? "#0d1117" : "#0a1440";
+    // Solid initial fill so there's no flash on first frame
+    ctx.fillStyle = isDarkMode ? "#0d1117" : "#f5f5f7";
     ctx.fillRect(0, 0, width, height);
 
-    const bgFill = isDarkMode ? "rgba(13,17,23,0.05)" : "rgba(10,20,64,0.06)";
-    const charColor = isDarkMode ? "#67e8f9" : "rgba(255,255,255,0.75)";
+    const bgFill = isDarkMode ? "rgba(13,17,23,0.05)" : "rgba(245,245,247,0.45)";
+    const charColor = isDarkMode ? "#67e8f9" : "rgba(100,116,139,0.25)";
 
     function draw() {
       ctx.fillStyle = bgFill;

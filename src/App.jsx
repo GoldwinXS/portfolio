@@ -254,7 +254,7 @@ export default function App() {
               height: "100%",
               background: prefersDarkMode
                 ? "rgba(0, 0, 0, 0.5)"
-                : "rgba(10, 20, 60, 0.65)",
+                : "rgba(245, 245, 247, 0.15)",
               zIndex: -1,
             }}
           />
@@ -273,7 +273,7 @@ export default function App() {
             }}
           />
 
-          <Box sx={{ color: "white", px: 2, position: "relative", zIndex: 2 }}>
+          <Box sx={{ color: prefersDarkMode ? "white" : "text.primary", px: 2, position: "relative", zIndex: 2 }}>
             <motion.div
               initial={{ opacity: 0, scale: 0.98 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -310,11 +310,15 @@ export default function App() {
                       borderRadius: 8,
                       px: 3,
                       py: 1.5,
-                      color: "white",
-                      borderColor: "rgba(255,255,255,0.6)",
+                      color: prefersDarkMode ? "white" : "text.primary",
+                      borderColor: prefersDarkMode
+                        ? "rgba(255,255,255,0.6)"
+                        : "rgba(0,0,0,0.35)",
                       "&:hover": {
-                        borderColor: "white",
-                        bgcolor: "rgba(255,255,255,0.08)",
+                        borderColor: prefersDarkMode ? "white" : "rgba(0,0,0,0.8)",
+                        bgcolor: prefersDarkMode
+                          ? "rgba(255,255,255,0.08)"
+                          : "rgba(0,0,0,0.04)",
                       },
                     }}
                   >
