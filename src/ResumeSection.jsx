@@ -1,121 +1,182 @@
-import React from "react";
+import { useState } from "react";
 import {
-  Container,
   Typography,
   Grid,
   Card,
   CardContent,
   Box,
   Chip,
-  Divider,
   Collapse,
   IconButton,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 
+const coreSkills = [
+  "Python", "Django", "React", "JavaScript", "HTML/CSS",
+  "MySQL", "Docker", "GCP", "GitHub Actions", "CI/CD",
+];
+
+const familiarSkills = [
+  "Kubernetes", "Terraform", "Azure", "MongoDB",
+  "Kafka", "FastAPI", "Flask", "Snowflake", "Power BI",
+];
+
 const experience = [
   {
-    company: "Empire Life",
-    role: "Full Stack Software Engineer",
+    company: "Empire Life Insurance",
+    role: "Full-Stack Software Engineer",
     period: "July 2021 – September 2025",
     details: [
-      "Delivered production-grade applications within a 100k+ LOC ecosystem using React, Django, and GCP.",
-      "Deployed services via Docker, Kubernetes, and CI/CD pipelines while collaborating with infrastructure and security teams.",
-      "Optimized internal tools and dashboards to streamline business processes and reduce manual workflows.",
-      "Contributed to architecture design and guided technical decisions; conducted code reviews and mentored teammates.",
+      "Resolved hundreds of production bugs across a complex, interconnected 100k+ LOC codebase spanning multiple team domains, building broad cross-system knowledge in the process.",
+      "Led front-end and back-end development of a new user portal with a distinct flow integrated into the core application; coordinated design and delivery across team members.",
+      "Participated in architecture planning by contributing implementation-level insight on how proposed changes would interface with existing systems.",
+      "Mentored new hires and contract developers during onboarding; conducted code reviews as part of a two-review-per-PR process.",
+      "Designed and managed cloud infrastructure using Docker, GCP, and GitHub Actions CI/CD pipelines; maintained and adapted YAML configurations for deployment workflows.",
+      "Applied LLM-based coding assistants and agentic AI workflows to support development velocity and code quality.",
     ],
-    tech: ["React", "Django", "GCP", "Docker", "Kubernetes", "CI/CD"],
+    tech: ["React", "Django", "Python", "MySQL", "Docker", "GCP", "GitHub Actions"],
   },
   {
     company: "Plotly",
     role: "Solutions Architect",
     period: "January 2021 – July 2021",
     details: [
-      "Designed scalable full-stack solutions for high-volume data applications.",
-      "Enhanced system reliability and performance for enterprise clients through efficient architecture design.",
+      "Built interactive analytics dashboards using Python, React, and Plotly Dash for enterprise clients.",
+      "Designed scalable application structures for client data pipelines covering ingestion, transformation, and visualization.",
+      "Collaborated directly with client teams to translate business requirements into technical specifications.",
     ],
-    tech: ["Plotly Dash", "Python", "React", "SQL"],
+    tech: ["Python", "React", "Plotly Dash", "SQL"],
   },
   {
     company: "Compuexcel",
     role: "Application Developer & Data Engineer",
     period: "2020 – January 2021",
     details: [
-      "Developed interactive Plotly Dash applications for complex data visualization.",
-      "Enabled client engagement with innovative, easily interpretable visual dashboards.",
+      "Developed business intelligence dashboards and internal reporting tools using Dash and SQL.",
+      "Built automated ETL workflows using Python to streamline data ingestion and cleanup processes.",
     ],
-    tech: ["Plotly Dash", "Python", "Data Visualization"],
+    tech: ["Python", "Plotly Dash", "SQL", "ETL"],
   },
   {
     company: "NetraMark",
-    role: "Full Stack Developer & ML Engineer",
+    role: "Full-Stack Developer & ML Engineer",
     period: "2020",
     details: [
-      "Built Python-based web applications integrating machine learning for data-driven insights.",
-      "Delivered AI-enhanced solutions that improved operational efficiency and user experience.",
+      "Developed web applications integrating machine learning models into interactive analytical interfaces.",
+      "Contributed to NLP pipelines, schema design, and front-end data presentation.",
     ],
-    tech: ["Python", "ML", "Web Development"],
+    tech: ["Python", "Machine Learning", "NLP"],
   },
 ];
 
 export default function ResumeSection() {
-  const [openIndex, setOpenIndex] = React.useState(null);
+  const [openIndex, setOpenIndex] = useState(null);
   const toggleCollapse = (index) =>
     setOpenIndex(openIndex === index ? null : index);
 
   return (
-    <Container maxWidth="lg" sx={{ py: 8 }}>
-      {/* Blurb section */}
+    <Box sx={{ py: 6 }}>
+      {/* Profile + Skills */}
       <Card
         elevation={3}
         sx={{
           mb: 6,
-          p: 3,
+          p: { xs: 3, sm: 4 },
           backgroundColor: (theme) =>
             theme.palette.mode === "dark"
               ? theme.palette.background.paper
               : "#f9f9f9",
-          borderRadius: 2, // less rounded
-          textAlign: "center",
         }}
       >
-        <Typography variant="h5" gutterBottom>
-          Experience & Expertise
+        <Typography variant="h5" gutterBottom fontWeight={700}>
+          About Me
         </Typography>
-        <Typography variant="body1" color="text.secondary">
-          I am a full-stack software engineer who builds scalable, innovative,
-          and data-driven applications. I combine frontend and backend expertise
-          with cloud infrastructure and machine learning to deliver high-impact
-          solutions that enhance user experience and operational efficiency.
+        <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
+          Full-stack software engineer with 4+ years delivering and maintaining
+          production software on a large-scale enterprise financial platform.
+          Deep cross-system knowledge of complex legacy codebases acquired
+          through sustained bug resolution, feature delivery, and iterative
+          improvement. Consistent record of clean, QA-ready delivery and strong
+          stakeholder communication. Practical experience with LLM-based
+          assistants and agentic AI workflows. Bilingual in English and French.
         </Typography>
+
+        <Typography
+          variant="overline"
+          color="text.secondary"
+          display="block"
+          sx={{ mb: 0.75 }}
+        >
+          Core Stack
+        </Typography>
+        <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.75, mb: 2.5 }}>
+          {coreSkills.map((s) => (
+            <Chip
+              key={s}
+              label={s}
+              size="small"
+              color="secondary"
+              variant="outlined"
+              sx={{ borderRadius: 1, fontSize: "0.72rem" }}
+            />
+          ))}
+        </Box>
+
+        <Typography
+          variant="overline"
+          color="text.secondary"
+          display="block"
+          sx={{ mb: 0.75 }}
+        >
+          Also Familiar With
+        </Typography>
+        <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.75 }}>
+          {familiarSkills.map((s) => (
+            <Chip
+              key={s}
+              label={s}
+              size="small"
+              variant="outlined"
+              sx={{ borderRadius: 1, fontSize: "0.72rem" }}
+            />
+          ))}
+        </Box>
       </Card>
 
-      {/* Experience Grid */}
-      <Grid container spacing={4} justifyContent="center">
+      {/* Experience */}
+      <Grid container spacing={3} justifyContent="center">
         {experience.map((exp, index) => (
-          <Grid item xs={12} sm={6} md={4} key={index} sx={{ display: "flex" }}>
+          <Grid item xs={12} sm={6} md={6} key={index} sx={{ display: "flex" }}>
             <Card
               elevation={3}
               sx={{
                 display: "flex",
                 flexDirection: "column",
-                width: "100rem",
+                width: "100%",
+                borderTop: "3px solid",
+                borderTopColor: "secondary.main",
               }}
             >
               <CardContent>
                 <Box
                   display="flex"
                   justifyContent="space-between"
-                  alignItems="center"
+                  alignItems="flex-start"
                 >
-                  <Box>
-                    <Typography variant="h6">{exp.role}</Typography>
+                  <Box sx={{ pr: 1 }}>
+                    <Typography variant="h6" fontWeight={600}>
+                      {exp.role}
+                    </Typography>
                     <Typography variant="subtitle2" color="text.secondary">
-                      {exp.company} • {exp.period}
+                      {exp.company} · {exp.period}
                     </Typography>
                   </Box>
-                  <IconButton onClick={() => toggleCollapse(index)}>
+                  <IconButton
+                    onClick={() => toggleCollapse(index)}
+                    size="small"
+                    sx={{ flexShrink: 0 }}
+                  >
                     {openIndex === index ? (
                       <ExpandLessIcon />
                     ) : (
@@ -131,18 +192,20 @@ export default function ResumeSection() {
                         key={i}
                         variant="body2"
                         color="text.secondary"
-                        sx={{ mb: 0.5 }}
+                        sx={{ mb: 1, pl: 1, borderLeft: "2px solid", borderColor: "divider" }}
                       >
-                        • {detail}
+                        {detail}
                       </Typography>
                     ))}
-                    <Box mt={1} display="flex" flexWrap="wrap" gap={1}>
+                    <Box mt={1.5} display="flex" flexWrap="wrap" gap={0.75}>
                       {exp.tech.map((tech, i) => (
                         <Chip
                           key={i}
                           label={tech}
                           size="small"
                           color="secondary"
+                          variant="outlined"
+                          sx={{ borderRadius: 1, fontSize: "0.7rem" }}
                         />
                       ))}
                     </Box>
@@ -153,6 +216,6 @@ export default function ResumeSection() {
           </Grid>
         ))}
       </Grid>
-    </Container>
+    </Box>
   );
 }

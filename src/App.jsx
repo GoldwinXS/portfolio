@@ -290,7 +290,7 @@ export default function App() {
             >
               <motion.div variants={item}>
                 <Typography variant="h5" sx={{ mb: 4 }}>
-                  Full Stack Engineer • AI & Data • React • MLOps
+                  Full-Stack Engineer  •  Django & React  •  Python  •  Bilingual EN/FR
                 </Typography>
               </motion.div>
               <motion.div variants={item}>
