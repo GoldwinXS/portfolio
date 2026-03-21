@@ -170,10 +170,10 @@ export default function ProjectCard({ project }) {
               borderRadius: 2,
               textTransform: "none",
               fontWeight: 600,
-              bgcolor: "action.selected",
-              color: "text.primary",
+              bgcolor: "#24292f",
+              color: "#ffffff",
               boxShadow: "none",
-              "&:hover": { bgcolor: "action.hover", boxShadow: "none" },
+              "&:hover": { bgcolor: "#30363d", boxShadow: "none" },
             }}
           >
             GitHub

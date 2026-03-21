@@ -51,11 +51,11 @@ const projects = [
     imgFallback: "images/placeholder.png",
   },
   {
-    title: "Vector - Tank Game",
-    description: "A little tank game made for fun!",
-    tech: "Python",
+    title: "VECTOR – Tank Combat Game",
+    description:
+      "Browser-based third-person tank shooter built with Three.js. Battle waves of AI enemies across procedural terrain using a dual weapon system (MG + arcing cannon), roguelike upgrades, and a neural-network tactic selector that adapts enemy behaviour in real time.",
+    tech: "Three.js, JavaScript",
     img: "images/vector.jpg",
-    imgFallback: "images/placeholder.jpg",
     link: "https://goldwinxs.github.io/VectorTankGame/",
     github: "https://github.com/GoldwinXS/VectorTankGame",
   },
@@ -119,6 +119,8 @@ const projects = [
       "Experimental WebGL-based ray tracer running in the browser at 120fps. Explores GPU parallelization in GLSL and optimized BVH structures.",
     tech: "WebGL, JavaScript, GLSL",
     img: "images/raytrace.png",
+    link: "https://goldwinxs.github.io/RealTimeJSRayTracer/",
+    github: "https://github.com/GoldwinXS/RealTimeJSRayTracer",
   },
 ];
 
@@ -158,8 +160,8 @@ export default function App() {
 
   const techCategories = [
     "All",
-    "Javascript",
     "Python",
+    "JavaScript",
     "React",
     "iOS",
     "WebGL",
@@ -292,21 +294,40 @@ export default function App() {
                 </Typography>
               </motion.div>
               <motion.div variants={item}>
-                <Button
-                  variant="contained"
-                  color="secondary"
-                  href="#projects"
-                  sx={{ borderRadius: 8, px: 3, py: 1.5 }}
-                >
-                  View My Work
-                </Button>
+                <Box sx={{ display: "flex", gap: 2, justifyContent: "center", flexWrap: "wrap" }}>
+                  <Button
+                    variant="contained"
+                    color="secondary"
+                    href="#projects"
+                    sx={{ borderRadius: 8, px: 3, py: 1.5 }}
+                  >
+                    Personal Projects
+                  </Button>
+                  <Button
+                    variant="outlined"
+                    href="#experience"
+                    sx={{
+                      borderRadius: 8,
+                      px: 3,
+                      py: 1.5,
+                      color: "white",
+                      borderColor: "rgba(255,255,255,0.6)",
+                      "&:hover": {
+                        borderColor: "white",
+                        bgcolor: "rgba(255,255,255,0.08)",
+                      },
+                    }}
+                  >
+                    Work Experience
+                  </Button>
+                </Box>
               </motion.div>
             </motion.div>
           </Box>
         </Box>
 
         {/* ABOUT */}
-        <Container maxWidth="md" sx={{ mb: 8 }}>
+        <Container id="experience" maxWidth="md" sx={{ mb: 8 }}>
           <ResumeSection />
         </Container>
 
