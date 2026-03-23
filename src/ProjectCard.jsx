@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Card,
   CardContent,
@@ -16,7 +16,16 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 export default function ProjectCard({ project }) {
   const [slide, setSlide] = useState(0);
 
-  const isCarousel = project.images && project.images.length > 0;
+  const isCarousel = project.images && project.images.length > 1;
+
+  useEffect(() => {
+    if (!isCarousel) return;
+    const id = setInterval(() => {
+      setSlide((prev) => (prev + 1) % project.images.length);
+    }, 3000);
+    return () => clearInterval(id);
+  }, [isCarousel, project.images?.length]);
+
   const nextSlide = () =>
     setSlide((prev) => (prev + 1) % project.images.length);
   const prevSlide = () =>
@@ -64,48 +73,51 @@ export default function ProjectCard({ project }) {
           />
         )}
 
-        {/* Carousel */}
+        {/* Carousel with fade */}
         {!project.video && isCarousel && (
           <>
-            <Box
+            {project.images.map((img, i) => (
+              <Box
+                key={img}
+                sx={{
+                  position: "absolute",
+                  inset: 0,
+                  backgroundImage: `url(${img})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  opacity: i === slide ? 1 : 0,
+                  transition: "opacity 0.9s ease",
+                }}
+              />
+            ))}
+            <IconButton
+              onClick={prevSlide}
               sx={{
                 position: "absolute",
-                inset: 0,
-                backgroundImage: `url(${project.images[slide]})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
+                top: "50%",
+                left: 4,
+                transform: "translateY(-50%)",
+                bgcolor: "rgba(0,0,0,0.3)",
+                color: "white",
+                zIndex: 1,
               }}
-            />
-            {project.images.length > 1 && (
-              <>
-                <IconButton
-                  onClick={prevSlide}
-                  sx={{
-                    position: "absolute",
-                    top: "50%",
-                    left: 4,
-                    transform: "translateY(-50%)",
-                    bgcolor: "rgba(0,0,0,0.3)",
-                    color: "white",
-                  }}
-                >
-                  <ArrowBackIosIcon fontSize="small" />
-                </IconButton>
-                <IconButton
-                  onClick={nextSlide}
-                  sx={{
-                    position: "absolute",
-                    top: "50%",
-                    right: 4,
-                    transform: "translateY(-50%)",
-                    bgcolor: "rgba(0,0,0,0.3)",
-                    color: "white",
-                  }}
-                >
-                  <ArrowForwardIosIcon fontSize="small" />
-                </IconButton>
-              </>
-            )}
+            >
+              <ArrowBackIosIcon fontSize="small" />
+            </IconButton>
+            <IconButton
+              onClick={nextSlide}
+              sx={{
+                position: "absolute",
+                top: "50%",
+                right: 4,
+                transform: "translateY(-50%)",
+                bgcolor: "rgba(0,0,0,0.3)",
+                color: "white",
+                zIndex: 1,
+              }}
+            >
+              <ArrowForwardIosIcon fontSize="small" />
+            </IconButton>
           </>
         )}
 
