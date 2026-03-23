@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import { useMemo } from "react";
 import { motion } from "framer-motion";
 import {
   AppBar,
@@ -47,14 +47,14 @@ const projects = [
     description:
       "A Python utility that converts arbitrary coordinate sets into 3D OBJ mesh files optimized for 3D printing. Can also add a path from GPX file. Will also convert satellite colors into 4 discrete colors for 3D printing on an FDM printer.",
     tech: "Python",
-    images: ["images/mapcad.png", "images/mapcad1.png", "images/mapcad2.png"],
+    images: ["images/mapcad1.png", "images/mapcad2.png"],
   },
   {
     title: "VECTOR – Tank Combat Game",
     description:
       "Browser-based third-person tank shooter built with Three.js. Battle waves of AI enemies across procedural terrain using a dual weapon system (MG + arcing cannon), roguelike upgrades, and a neural-network tactic selector that adapts enemy behaviour in real time.",
     tech: "Three.js, JavaScript",
-    images: ["images/vector.jpg", "images/vector1.jpg", "images/vector2.png", "images/vector3.png", "images/vector4.png", "images/vector5.png", "images/vector6.png"],
+    images: ["images/vector1.jpg", "images/vector2.png", "images/vector3.png", "images/vector4.png", "images/vector5.png", "images/vector6.png"],
     link: "https://goldwinxs.github.io/VectorTankGame/",
     github: "https://github.com/GoldwinXS/VectorTankGame",
   },
@@ -71,7 +71,7 @@ const projects = [
     description:
       "EpFindr visualizes IMDb ratings for any TV show. Search a show, instantly see the season-by-season episode ratings, and find that one nostalgic episode you vaguely remember.",
     tech: "React, JavaScript, Material UI",
-    images: ["images/tvshow.png", "images/tvshow1.png", "images/tvshow2.png", "images/tvshow3.png"],
+    images: ["images/tvshow1.png", "images/tvshow2.png", "images/tvshow3.png"],
     link: "https://epfindr.web.app/",
   },
   {
@@ -79,8 +79,7 @@ const projects = [
     description:
       "A Python recreation of Minecraft mechanics. Build blocks, explore a voxel world, and experiment with procedural generation.",
     tech: "Python, Pygame",
-    video:
-      "https://www.youtube.com/embed/ow2RdiiKJCg?autoplay=1&mute=1&controls=0&loop=1&playlist=ow2RdiiKJCg&modestbranding=1",
+    img: "images/pycraft.png",
     github: "https://github.com/GoldwinXS/pycraft",
   },
   {
@@ -125,7 +124,7 @@ const projects = [
     description:
       "Experimental WebGL-based ray tracer running in the browser at 120fps. Explores GPU parallelization in GLSL and optimized BVH structures.",
     tech: "WebGL, JavaScript, GLSL",
-    images: ["images/raytrace.png", "images/raytrace1.png", "images/raytrace2.png", "images/raytrace3.png", "images/raytrace4.png", "images/raytrace5.png", "images/raytrace6.png"],
+    images: ["images/raytrace1.png", "images/raytrace2.png", "images/raytrace3.png", "images/raytrace4.png", "images/raytrace5.png", "images/raytrace6.png"],
     link: "https://goldwinxs.github.io/RealTimeJSRayTracer/",
     github: "https://github.com/GoldwinXS/RealTimeJSRayTracer",
   },

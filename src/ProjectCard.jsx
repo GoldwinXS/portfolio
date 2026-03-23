@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import {
   Card,
   CardContent,
@@ -17,12 +17,13 @@ export default function ProjectCard({ project }) {
   const [slide, setSlide] = useState(0);
 
   const isCarousel = project.images && project.images.length > 1;
+  const interval = useRef(2500 + Math.random() * 2000);
 
   useEffect(() => {
     if (!isCarousel) return;
     const id = setInterval(() => {
       setSlide((prev) => (prev + 1) % project.images.length);
-    }, 3000);
+    }, interval.current);
     return () => clearInterval(id);
   }, [isCarousel, project.images?.length]);
 
