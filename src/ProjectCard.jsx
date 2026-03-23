@@ -196,7 +196,7 @@ export default function ProjectCard({ project }) {
             variant="caption"
             sx={{ color: "text.disabled", fontStyle: "italic" }}
           >
-            Ancient project — code not available
+            {project.note ?? "Ancient project — code not available"}
           </Typography>
         )}
       </Box>

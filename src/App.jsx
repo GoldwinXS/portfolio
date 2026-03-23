@@ -47,15 +47,14 @@ const projects = [
     description:
       "A Python utility that converts arbitrary coordinate sets into 3D OBJ mesh files optimized for 3D printing. Can also add a path from GPX file. Will also convert satellite colors into 4 discrete colors for 3D printing on an FDM printer.",
     tech: "Python",
-    img: "images/mapcad.png",
-    imgFallback: "images/placeholder.png",
+    images: ["images/mapcad.png", "images/mapcad1.png", "images/mapcad2.png"],
   },
   {
     title: "VECTOR – Tank Combat Game",
     description:
       "Browser-based third-person tank shooter built with Three.js. Battle waves of AI enemies across procedural terrain using a dual weapon system (MG + arcing cannon), roguelike upgrades, and a neural-network tactic selector that adapts enemy behaviour in real time.",
     tech: "Three.js, JavaScript",
-    img: "images/vector.jpg",
+    images: ["images/vector.jpg", "images/vector1.jpg", "images/vector2.png", "images/vector3.png", "images/vector4.png", "images/vector5.png", "images/vector6.png"],
     link: "https://goldwinxs.github.io/VectorTankGame/",
     github: "https://github.com/GoldwinXS/VectorTankGame",
   },
@@ -72,7 +71,7 @@ const projects = [
     description:
       "EpFindr visualizes IMDb ratings for any TV show. Search a show, instantly see the season-by-season episode ratings, and find that one nostalgic episode you vaguely remember.",
     tech: "React, JavaScript, Material UI",
-    img: "images/tvshow.png",
+    images: ["images/tvshow.png", "images/tvshow1.png", "images/tvshow2.png", "images/tvshow3.png"],
     link: "https://epfindr.web.app/",
   },
   {
@@ -83,6 +82,14 @@ const projects = [
     video:
       "https://www.youtube.com/embed/ow2RdiiKJCg?autoplay=1&mute=1&controls=0&loop=1&playlist=ow2RdiiKJCg&modestbranding=1",
     github: "https://github.com/GoldwinXS/pycraft",
+  },
+  {
+    title: "Recipe Planner",
+    description:
+      "Full-stack web app for managing personal recipes, planning meals, and generating shopping lists — with AI-powered recipe generation, meal planning, and nutritional tracking. Supports Claude, Ollama, OpenAI-compatible APIs, and an in-browser WebLLM mode.",
+    tech: "Django, React, PostgreSQL, Docker, Material UI, Python",
+    images: ["images/recipe1.png", "images/recipe2.png", "images/recipe3.png", "images/recipe4.png", "images/recipe5.png", "images/recipe6.png", "images/recipe7.png"],
+    note: "Not yet deployed — check back soon!",
   },
   {
     title: "Recipe Chat – iOS App",
@@ -118,7 +125,7 @@ const projects = [
     description:
       "Experimental WebGL-based ray tracer running in the browser at 120fps. Explores GPU parallelization in GLSL and optimized BVH structures.",
     tech: "WebGL, JavaScript, GLSL",
-    img: "images/raytrace.png",
+    images: ["images/raytrace.png", "images/raytrace1.png", "images/raytrace2.png", "images/raytrace3.png", "images/raytrace4.png", "images/raytrace5.png", "images/raytrace6.png"],
     link: "https://goldwinxs.github.io/RealTimeJSRayTracer/",
     github: "https://github.com/GoldwinXS/RealTimeJSRayTracer",
   },
