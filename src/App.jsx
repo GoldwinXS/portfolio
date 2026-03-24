@@ -17,6 +17,8 @@ import {
   Paper,
 } from "@mui/material";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import Brightness4Icon from "@mui/icons-material/Brightness4";
+import Brightness7Icon from "@mui/icons-material/Brightness7";
 import ProjectCard from "./ProjectCard";
 import ResumeSection from "./ResumeSection";
 import { useMediaQuery } from "@mui/material";
@@ -122,7 +124,7 @@ const projects = [
   {
     title: "Real-Time Ray Tracing Browser Engine",
     description:
-      "Experimental WebGL-based ray tracer running in the browser at 120fps. Explores GPU parallelization in GLSL and optimized BVH structures.",
+      "A real-time voxel path tracer running in the browser via WebGL2, presented as a three-room interactive art gallery. Unlike rasterisers that fake lighting with tricks, it simulates actual light physics — global illumination, colour bleeding, specular reflections, and refraction. Built with a custom GLSL renderer using DDA ray traversal and 6-bounce radiance sampling.",
     tech: "WebGL, JavaScript, GLSL",
     images: ["images/raytrace1.png", "images/raytrace2.png", "images/raytrace3.png", "images/raytrace4.png", "images/raytrace5.png", "images/raytrace6.png"],
     link: "https://goldwinxs.github.io/RealTimeJSRayTracer/",
@@ -131,17 +133,18 @@ const projects = [
 ];
 
 export default function App() {
-  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const systemDark = useMediaQuery("(prefers-color-scheme: dark)");
+  const [darkMode, setDarkMode] = useState(systemDark);
 
   const theme = useMemo(
     () =>
       createTheme({
         palette: {
-          mode: prefersDarkMode ? "dark" : "light",
+          mode: darkMode ? "dark" : "light",
           background: {
-            default: prefersDarkMode ? "#0d1117" : "#f5f5f7",
+            default: darkMode ? "#0d1117" : "#f5f5f7",
           },
-          primary: { main: prefersDarkMode ? "#ffffff" : "#000000" },
+          primary: { main: darkMode ? "#ffffff" : "#000000" },
           secondary: { main: "#0071e3" },
         },
         typography: {
@@ -160,7 +163,7 @@ export default function App() {
         },
         shape: { borderRadius: 16 },
       }),
-    [prefersDarkMode],
+    [darkMode],
   );
   const [filter, setFilter] = useState("All");
 
@@ -173,11 +176,16 @@ export default function App() {
     "WebGL",
   ];
 
-  const filteredProjects = projects.filter((project) =>
-    filter === "All"
-      ? true
-      : project.tech.toLowerCase().includes(filter.toLowerCase()),
-  );
+  const filteredProjects = projects
+    .filter((project) =>
+      filter === "All"
+        ? true
+        : project.tech.toLowerCase().includes(filter.toLowerCase()),
+    )
+    .sort((a, b) => {
+      const ancient = (p) => !p.link && !p.github && !p.note;
+      return ancient(a) === ancient(b) ? 0 : ancient(a) ? 1 : -1;
+    });
 
   return (
     <ThemeProvider theme={theme}>
@@ -208,6 +216,9 @@ export default function App() {
             <Typography variant="h6" sx={{ flexGrow: 1, fontWeight: 600 }}>
               Goldwin Stewart
             </Typography>
+            <IconButton color="inherit" onClick={() => setDarkMode((d) => !d)}>
+              {darkMode ? <Brightness7Icon /> : <Brightness4Icon />}
+            </IconButton>
             <IconButton
               color="inherit"
               component={Link}
@@ -246,7 +257,7 @@ export default function App() {
               useVideo={false}
               videoUrl="https://www.youtube.com/embed/RR2EI8EEOOw?autoplay=1&mute=1&controls=0&loop=1&playlist=RR2EI8EEOOw"
               animationType="matrix"
-              isDarkMode={prefersDarkMode}
+              isDarkMode={darkMode}
             />
           </Box>
 
@@ -258,7 +269,7 @@ export default function App() {
               left: 0,
               width: "100%",
               height: "100%",
-              background: prefersDarkMode
+              background: darkMode
                 ? "rgba(0, 0, 0, 0.5)"
                 : "rgba(245, 245, 247, 0.15)",
               zIndex: -1,
@@ -279,7 +290,7 @@ export default function App() {
             }}
           />
 
-          <Box sx={{ color: prefersDarkMode ? "white" : "text.primary", px: 2, position: "relative", zIndex: 2 }}>
+          <Box sx={{ color: darkMode ? "white" : "text.primary", px: 2, position: "relative", zIndex: 2 }}>
             <motion.div
               initial={{ opacity: 0, scale: 0.98 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -310,17 +321,17 @@ export default function App() {
                       textTransform: "none", fontWeight: 600, fontSize: "1rem",
                       backdropFilter: "blur(24px) saturate(180%)",
                       WebkitBackdropFilter: "blur(24px) saturate(180%)",
-                      backgroundColor: prefersDarkMode
+                      backgroundColor: darkMode
                         ? "rgba(0,113,227,0.35)"
                         : "rgba(0,113,227,0.18)",
                       border: "1px solid",
-                      borderColor: prefersDarkMode
+                      borderColor: darkMode
                         ? "rgba(120,180,255,0.4)"
                         : "rgba(0,113,227,0.35)",
-                      color: prefersDarkMode ? "white" : "#0058b8",
+                      color: darkMode ? "white" : "#0058b8",
                       boxShadow: "0 2px 16px rgba(0,113,227,0.2)",
                       "&:hover": {
-                        backgroundColor: prefersDarkMode
+                        backgroundColor: darkMode
                           ? "rgba(0,113,227,0.5)"
                           : "rgba(0,113,227,0.28)",
                       },
@@ -337,17 +348,17 @@ export default function App() {
                       textTransform: "none", fontWeight: 600, fontSize: "1rem",
                       backdropFilter: "blur(24px) saturate(180%)",
                       WebkitBackdropFilter: "blur(24px) saturate(180%)",
-                      backgroundColor: prefersDarkMode
+                      backgroundColor: darkMode
                         ? "rgba(255,255,255,0.1)"
                         : "rgba(255,255,255,0.55)",
                       border: "1px solid",
-                      borderColor: prefersDarkMode
+                      borderColor: darkMode
                         ? "rgba(255,255,255,0.2)"
                         : "rgba(255,255,255,0.85)",
-                      color: prefersDarkMode ? "rgba(255,255,255,0.9)" : "rgba(0,0,0,0.75)",
+                      color: darkMode ? "rgba(255,255,255,0.9)" : "rgba(0,0,0,0.75)",
                       boxShadow: "0 2px 16px rgba(0,0,0,0.08)",
                       "&:hover": {
-                        backgroundColor: prefersDarkMode
+                        backgroundColor: darkMode
                           ? "rgba(255,255,255,0.18)"
                           : "rgba(255,255,255,0.78)",
                       },
