@@ -90,7 +90,7 @@ const projects = [
       "Full-stack web app for managing personal recipes, planning meals, and generating shopping lists — with AI-powered recipe generation, meal planning, and nutritional tracking. Supports Claude, Ollama, OpenAI-compatible APIs, and an in-browser WebLLM mode.",
     tech: "Django, React, PostgreSQL, Docker, Material UI, Python",
     images: ["images/recipe1.png", "images/recipe2.png", "images/recipe3.png", "images/recipe4.png", "images/recipe5.png", "images/recipe6.png", "images/recipe7.png"],
-    note: "Not yet deployed — check back soon!",
+    liveUrl: "https://bitstream.mywire.org/login",
   },
   {
     title: "Recipe Chat – iOS App",

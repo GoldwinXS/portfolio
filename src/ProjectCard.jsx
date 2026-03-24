@@ -19,6 +19,14 @@ export default function ProjectCard({ project }) {
   const isCarousel = project.images && project.images.length > 1;
   const interval = useRef(2500 + Math.random() * 2000);
 
+  const [reachable, setReachable] = useState(null);
+  useEffect(() => {
+    if (!project.liveUrl) return;
+    fetch(project.liveUrl, { mode: "no-cors" })
+      .then(() => setReachable(true))
+      .catch(() => setReachable(false));
+  }, [project.liveUrl]);
+
   useEffect(() => {
     if (!isCarousel) return;
     const id = setInterval(() => {
@@ -172,6 +180,19 @@ export default function ProjectCard({ project }) {
             Live Demo
           </Button>
         )}
+        {project.liveUrl && reachable === true && (
+          <Button
+            size="small"
+            variant="contained"
+            color="secondary"
+            href={project.liveUrl}
+            target="_blank"
+            endIcon={<OpenInNewIcon fontSize="inherit" />}
+            sx={{ borderRadius: 2, textTransform: "none", fontWeight: 600 }}
+          >
+            Live Demo
+          </Button>
+        )}
         {project.github && (
           <Button
             size="small"
@@ -192,7 +213,15 @@ export default function ProjectCard({ project }) {
             GitHub
           </Button>
         )}
-        {!project.link && !project.github && (
+        {project.liveUrl && reachable === false && (
+          <Typography
+            variant="caption"
+            sx={{ color: "text.disabled", fontStyle: "italic" }}
+          >
+            Not currently hosted — check back soon!
+          </Typography>
+        )}
+        {!project.link && !project.liveUrl && !project.github && (
           <Typography
             variant="caption"
             sx={{ color: "text.disabled", fontStyle: "italic" }}
