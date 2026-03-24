@@ -73,7 +73,7 @@ const projects = [
     description:
       "EpFindr visualizes IMDb ratings for any TV show. Search a show, instantly see the season-by-season episode ratings, and find that one nostalgic episode you vaguely remember.",
     tech: "React, JavaScript, Material UI",
-    images: ["images/tvshow1.png", "images/tvshow2.png", "images/tvshow3.png"],
+    images: ["images/tvshow2.png", "images/tvshow3.png"],
     link: "https://epfindr.web.app/",
   },
   {
@@ -183,8 +183,10 @@ export default function App() {
         : project.tech.toLowerCase().includes(filter.toLowerCase()),
     )
     .sort((a, b) => {
-      const ancient = (p) => !p.link && !p.github && !p.note;
-      return ancient(a) === ancient(b) ? 0 : ancient(a) ? 1 : -1;
+      const ancient = (p) => !p.link && !p.liveUrl && !p.github && !p.note;
+      if (ancient(a) !== ancient(b)) return ancient(a) ? 1 : -1;
+      const imgCount = (p) => p.images?.length || (p.img ? 1 : 0);
+      return imgCount(b) - imgCount(a);
     });
 
   return (
