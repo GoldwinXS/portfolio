@@ -7,6 +7,7 @@ import {
   Box,
   IconButton,
   Chip,
+  CircularProgress,
 } from "@mui/material";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
@@ -179,6 +180,9 @@ export default function ProjectCard({ project }) {
           >
             Live Demo
           </Button>
+        )}
+        {project.liveUrl && reachable === null && (
+          <CircularProgress size={16} color="secondary" />
         )}
         {project.liveUrl && reachable === true && (
           <Button
