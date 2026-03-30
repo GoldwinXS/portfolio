@@ -85,6 +85,14 @@ const projects = [
     github: "https://github.com/GoldwinXS/pycraft",
   },
   {
+    title: "Global Intelligence Dashboard",
+    description:
+      "Real-time OSINT dashboard with a 3D interactive globe. Aggregates global event data from GDELT, USGS earthquakes, WHO disease outbreak feeds, and curated RSS sources — visualized as live event markers on a Three.js globe.",
+    tech: "React, Python, Three.js, FastAPI, Docker",
+    images: ["images/globaldashboard1.png", "images/globaldashboard2.png", "images/globaldashboard3.png", "images/globaldashboard4.png"],
+    liveUrl: "https://dashboard.bitstream.mywire.org/",
+  },
+  {
     title: "Recipe Planner",
     description:
       "Full-stack web app for managing personal recipes, planning meals, and generating shopping lists — with AI-powered recipe generation, meal planning, and nutritional tracking. Supports Claude, Ollama, OpenAI-compatible APIs, and an in-browser WebLLM mode.",
