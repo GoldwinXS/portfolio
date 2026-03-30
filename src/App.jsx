@@ -218,6 +218,16 @@ export default function App() {
             <Typography variant="h6" sx={{ flexGrow: 1, fontWeight: 600 }}>
               Goldwin Stewart
             </Typography>
+            <Button
+              href="/goldwin_resume.pdf"
+              download
+              size="small"
+              variant="outlined"
+              color="inherit"
+              sx={{ textTransform: "none", fontWeight: 600, borderRadius: 2, mr: 1 }}
+            >
+              Resume
+            </Button>
             <IconButton color="inherit" onClick={() => setDarkMode((d) => !d)}>
               {darkMode ? <Brightness7Icon /> : <Brightness4Icon />}
             </IconButton>
